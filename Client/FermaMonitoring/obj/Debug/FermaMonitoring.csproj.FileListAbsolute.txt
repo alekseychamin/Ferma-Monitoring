@@ -45,3 +45,13 @@ D:\Project C#\Ferma\FermaMonitoring (task ping)\FermaMonitoring\bin\Debug\NModbu
 D:\Project C#\Ferma\FermaMonitoring (task ping)\FermaMonitoring\bin\Debug\Newtonsoft.Json.xml
 D:\Project C#\Ferma\FermaMonitoring (task ping)\FermaMonitoring\bin\Debug\OpenHardwareMonitorLib.pdb
 D:\Project C#\Ferma\FermaMonitoring (task ping)\FermaMonitoring\obj\Debug\FermaMonitoring.csprojResolveAssemblyReference.cache
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\FermaMonitoring.exe.config
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\obj\Debug\FermaMonitoring.exe
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\obj\Debug\FermaMonitoring.pdb
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\obj\Debug\FermaMonitoring.csprojResolveAssemblyReference.cache
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\FermaMonitoring.exe
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\FermaMonitoring.pdb
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\NModbus4.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\OpenHardwareMonitorLib.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Client\FermaMonitoring\bin\Debug\Newtonsoft.Json.xml

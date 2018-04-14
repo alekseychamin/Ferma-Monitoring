@@ -41,7 +41,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="OpenHardwareMonitorLib">
-      <HintPath>..\..\openhardwaremonitor\Bin\Debug\OpenHardwareMonitorLib.dll</HintPath>
+      <HintPath>..\OpenHardwareMonitorLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
