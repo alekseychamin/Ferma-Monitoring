@@ -71,3 +71,18 @@ D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\Newto
 D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
 D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\Telegram.Bot.xml
 D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\FermaTelegram.exe.config
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\obj\Debug\FermaTelegram.exe
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\obj\Debug\FermaTelegram.pdb
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\FermaTelegram.exe
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\FermaTelegram.pdb
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\AngleSharp.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\OpenPop.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\Telegram.Bot.dll
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\AngleSharp.xml
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\Telegram.Bot.xml
+D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
