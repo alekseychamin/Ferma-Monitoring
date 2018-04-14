@@ -1,1 +1,0 @@
-D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\x86\Debug\FermaTelegram.exe.config

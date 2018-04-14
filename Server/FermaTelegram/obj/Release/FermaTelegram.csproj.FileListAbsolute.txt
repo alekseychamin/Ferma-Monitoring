@@ -1,0 +1,15 @@
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\FermaTelegram.exe.config
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\FermaTelegram.exe
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\FermaTelegram.pdb
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\Newtonsoft.Json.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\System.Net.Http.Formatting.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\Telegram.Bot.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\Newtonsoft.Json.xml
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\System.Net.Http.Formatting.xml
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Release\Telegram.Bot.xml
+D:\Project C#\FermaTelegram\FermaTelegram\obj\Release\FermaTelegram.csprojResolveAssemblyReference.cache
+D:\Project C#\FermaTelegram\FermaTelegram\obj\Release\FermaTelegram.exe
+D:\Project C#\FermaTelegram\FermaTelegram\obj\Release\FermaTelegram.pdb
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Release\FermaTelegram.exe.config
+D:\Project C#\FermaTelegram (task)\FermaTelegram\obj\Release\FermaTelegram.exe
+D:\Project C#\FermaTelegram (task)\FermaTelegram\obj\Release\FermaTelegram.pdb
