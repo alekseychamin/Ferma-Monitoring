@@ -423,14 +423,17 @@ namespace FermaMonitoring
                 videocard.UpDateSens();
                 try
                 {
-                    foreach (var mes in videocard.listMessage)
+
+                    int i = 0;
+                    while (i < videocard.listMessage.Count)
                     {
+                        string mes = videocard.listMessage[i];
                         if (mes != "")
                         {
                             mesVideoCard = mesVideoCard + mes + "\n";
                             videocard.listMessage.Remove(mes);
                         }
-                    }
+                    }                    
                 }
                 catch (Exception ex)
                 {
