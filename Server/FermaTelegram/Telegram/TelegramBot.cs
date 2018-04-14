@@ -89,8 +89,8 @@ namespace FermaTelegram
 
         private async void UpMessage()
         {
-            int offset = 0;            
-
+            int offset = 0;
+            
             while (true)
             {
                 // цикл по всем фермаа для определения необходимости выводить предупреждения                                                                    
@@ -124,7 +124,8 @@ namespace FermaTelegram
                 {
                     //Console.WriteLine(DateTime.Now.ToString() + "\n" + "Error in Bot Do Work get update: " + ex.Message);
                     if (_del != null)
-                        _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
+                        _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message + 
+                             " Message try to get from telegram");
 
                 }                                
             }
@@ -167,7 +168,8 @@ namespace FermaTelegram
                             {
                                 //Console.WriteLine(DateTime.Now.ToString() + "\n" + "Error in Bot Send Message: " + ex.Message);
                                 if (_del != null)
-                                    _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
+                                    _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message +
+                                         " Text of message to send : " + telmessage.Text);
                             }
                         }
                     }
