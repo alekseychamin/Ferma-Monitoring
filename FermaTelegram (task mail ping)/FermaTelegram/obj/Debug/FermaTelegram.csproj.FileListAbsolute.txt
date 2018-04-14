@@ -1,0 +1,73 @@
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\FermaTelegram.exe.config
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\FermaTelegram.exe
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\FermaTelegram.pdb
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\Telegram.Bot.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\Telegram.Bot.xml
+D:\Project C#\FermaTelegram\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
+D:\Project C#\FermaTelegram\FermaTelegram\obj\Debug\FermaTelegram.exe
+D:\Project C#\FermaTelegram\FermaTelegram\obj\Debug\FermaTelegram.pdb
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\AngleSharp.dll
+D:\Project C#\FermaTelegram\FermaTelegram\bin\Debug\AngleSharp.xml
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\FermaTelegram.exe.config
+D:\Project C#\FermaTelegram (task)\FermaTelegram\obj\Debug\FermaTelegram.exe
+D:\Project C#\FermaTelegram (task)\FermaTelegram\obj\Debug\FermaTelegram.pdb
+D:\Project C#\FermaTelegram (task)\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\FermaTelegram.exe
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\FermaTelegram.pdb
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\AngleSharp.dll
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\Telegram.Bot.dll
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\AngleSharp.xml
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\FermaTelegram (task)\FermaTelegram\bin\Debug\Telegram.Bot.xml
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\FermaTelegram.exe.config
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\obj\Debug\FermaTelegram.exe
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\obj\Debug\FermaTelegram.pdb
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\FermaTelegram.exe
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\FermaTelegram.pdb
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\AngleSharp.dll
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\OpenPop.dll
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Telegram.Bot.dll
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\AngleSharp.xml
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Telegram.Bot.xml
+D:\Project C#\FermaTelegram (task mail)\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\FermaTelegram.exe.config
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\obj\Debug\FermaTelegram.exe
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\obj\Debug\FermaTelegram.pdb
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\FermaTelegram.exe
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\FermaTelegram.pdb
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\AngleSharp.dll
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\OpenPop.dll
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Telegram.Bot.dll
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\AngleSharp.xml
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\bin\Debug\Telegram.Bot.xml
+D:\Project C#\Ferma\FermaTelegram (task mail)\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\FermaTelegram.exe.config
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\obj\Debug\FermaTelegram.exe
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\obj\Debug\FermaTelegram.pdb
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\FermaTelegram.exe
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\FermaTelegram.pdb
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\AngleSharp.dll
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\Newtonsoft.Json.dll
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\OpenPop.dll
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.dll
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\Telegram.Bot.dll
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\AngleSharp.xml
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\bin\Debug\Telegram.Bot.xml
+D:\Project C#\Ferma\FermaTelegram (task mail ping)\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache
