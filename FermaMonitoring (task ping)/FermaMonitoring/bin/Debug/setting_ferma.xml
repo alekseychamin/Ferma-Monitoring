@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ferma>
+  <time time="time">
+    <delayHardwareTime_sec>15</delayHardwareTime_sec>
+    <delayShowMessage_min>15</delayShowMessage_min>
+    <delayStartMiner_min>1</delayStartMiner_min>
+  </time>
+  <network network="network">
+    <IPaddressClient>192.168.0.33</IPaddressClient>
+	<IPaddressServer>192.168.0.33</IPaddressServer>
+    <port>8085</port>
+  </network>
+  <miner miner="ZEC">
+    <path>C:\Users\Alex\Downloads\ZEC\ZEC.exe</path>
+    <arg>--server eu1-zcash.flypool.org --port 3333 --user t1awFddn1dam2Vj5h3tz2BXcivN1o5j4irn.ferma1 --pass x</arg>
+    <name>ZEC</name>
+    <procname>ZEC</procname>
+  </miner>
+  <miner miner="VTC">
+    <path>C:\ccminer-x64-2.2.3-cuda9\VTC.exe</path>
+    <arg>-a lyra2v2 -o stratum+tcp://coinotron.com:3340 -u ale-san2006.Ferma1 -p 12345</arg>
+    <name>VTC</name>
+    <procname>VTC</procname>
+  </miner>
+  <miner miner="BTG">
+    <path>C:\BTG\BTG.exe</path>
+    <arg>--server eu.btgpool.pro --port 3857 --user GQmwQEEf2w2SBhM9Ytkn3WngzXDHQANJTX.ferma1 --pass x --pec</arg>
+    <name>BTG</name>
+    <procname>BTG</procname>
+  </miner>
+  <current_miner current_miner="ZEC">
+    <name>ZEC</name>
+  </current_miner>
+</ferma>

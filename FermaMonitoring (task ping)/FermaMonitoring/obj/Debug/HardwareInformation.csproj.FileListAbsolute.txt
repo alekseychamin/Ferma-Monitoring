@@ -1,0 +1,9 @@
+D:\Project C#\HardwareInformation\HardwareInformation\bin\Debug\HardwareInformation.exe.config
+D:\Project C#\HardwareInformation\HardwareInformation\bin\Debug\HardwareInformation.exe
+D:\Project C#\HardwareInformation\HardwareInformation\bin\Debug\HardwareInformation.pdb
+D:\Project C#\HardwareInformation\HardwareInformation\obj\Debug\HardwareInformation.csprojResolveAssemblyReference.cache
+D:\Project C#\HardwareInformation\HardwareInformation\obj\Debug\HardwareInformation.exe
+D:\Project C#\HardwareInformation\HardwareInformation\obj\Debug\HardwareInformation.pdb
+D:\Project C#\HardwareInformation\HardwareInformation\bin\Debug\OpenHardwareMonitorLib.dll
+D:\Project C#\HardwareInformation\HardwareInformation\bin\Debug\OpenHardwareMonitorLib.pdb
+D:\Project C#\HardwareInformation\HardwareInformation\bin\Debug\NModbus4.dll

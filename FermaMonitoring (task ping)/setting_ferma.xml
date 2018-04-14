@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ferma>
+  <delayHardwareTime_sec>15</delayHardwareTime_sec>
+  <delayShowMessage_min>15</delayShowMessage_min>  
+  <network name="network">
+    <IPaddressServer>192.168.0.33</IPaddressServer>
+    <port>8085</port>
+  </network>
+  <miners>
+	<miner name="ZEC">
+		<path>C:\Users\Alex\Downloads\Zec Miner 0.3.4b\miner.exe</path>
+		<arg>--server eu1-zcash.flypool.org --port 3333 --user t1Y6Gwbv6wphN38W6NJkyNFmXgCsLXHoBhi.ferma1 --pass x</arg>
+		<command>ZEC<command>
+	</miner>
+	<miner name="VTC">
+		<path>C:\Users\Alex\Downloads\Zec Miner 0.3.4b\miner.exe</path>
+		<arg>--server eu1-zcash.flypool.org --port 3333 --user t1Y6Gwbv6wphN38W6NJkyNFmXgCsLXHoBhi.ferma1 --pass x</arg>
+		<command>VTC<command>
+	</miner>
+  </miners>  
+</ferma>
