@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -89,6 +90,21 @@ namespace FermaTelegram
                 client.Dispose();                
                 Thread.Sleep(1000 * 30 );
             }
+        }
+
+        public void SendMailReply()
+        {
+            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+            MailAddress add = new MailAddress(txtReceiverEmailAddr.Text);
+            MailMessage msg = new MailMessage();
+            msg.To.Add(add);
+            msg.From = new MailAddress(txtYourEmailAddr.Text);
+            msg.IsBodyHtml = true;
+            msg.Subject = txtSubject.Text;
+            msg.Body = txtBody.Text;
+            c.Credentials = new System.Net.NetworkCredential(txtYourEmailAddr.Text, txtYourPassword.Text);
+            c.EnableSsl = true;
+            c.Send(msg);
         }
     }
 }

@@ -62,12 +62,14 @@ namespace FermaTelegram
 
             listCommand = new List<Command>();
 
-            tcpServer = new TcpServer(port, IPaddress, listMessage);
+            tcpServer = new TcpServer(port, IPaddress);
+            tcpServer.listMessage = listMessage;
 
             tcpServer.RegisterHandler(SaveLogMessage);
             
 
-            mailCommand = new MailCommand("pop.mail.ru", 995, true, "ale-san2006@mail.ru", "260686zvezda");
+            mailCommand = new MailCommand("imap.gmail.com", 993, true, "fermaalnik@gmail.com", "Jowfyerbarbujd2");
+            mailCommand.listMessage = listMessage;
 
             mailCommand.RegisterHandler(SaveLogMessage);            
 

@@ -31,11 +31,10 @@ namespace FermaTelegram
             _del = del;
         }
 
-        public TcpServer(int _port, string IPaddress, ListMessage listMessage)
+        public TcpServer(int _port, string IPaddress)
         {
 
-            port = _port;
-            this.listMessage = listMessage;
+            port = _port;            
 
             IPHostEntry ipEntry = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress localAddr = IPAddress.Parse(IPaddress);
