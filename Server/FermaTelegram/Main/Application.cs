@@ -144,12 +144,12 @@ namespace FermaTelegram
                         {
                             if (childnode.Name == "chatID")
                             {
-                                ChatId = Convert.ToInt32(childnode.InnerText);
-                                ChatIdWarning = Convert.ToInt32(childnode.InnerText);
+                                //ChatId = Convert.ToInt32(childnode.InnerText);
+                                //ChatIdWarning = Convert.ToInt32(childnode.InnerText);
                             }
                             if (childnode.Name == "token")
                             {
-                                token = childnode.InnerText;
+                                //token = childnode.InnerText;
                             }                            
                         }                        
                     }
@@ -166,9 +166,9 @@ namespace FermaTelegram
                 int i = 0;
                 string message;
 
-                while (i < telegramBot.listMessageToApp.Count)
+                while (i < listMessage.command.Count)
                 {
-                    message = telegramBot.listMessageToApp[i];
+                    message = listMessage.command[i];
 
                     foreach (var command in listCommand)
                     {
@@ -177,7 +177,7 @@ namespace FermaTelegram
                             command.Excecute();
                         }
                     }
-                    telegramBot.listMessageToApp.Remove(message);
+                    listMessage.command.Remove(message);
                 }
                 
                 Thread.Sleep(100);
