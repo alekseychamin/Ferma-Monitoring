@@ -63,7 +63,7 @@ namespace FermaTelegram
 
             try
             {
-                Bot = new Telegram.Bot.TelegramBotClient(token);
+                Bot = new TelegramBotClient(token);
                 await Bot.SetWebhookAsync("");
                 start = true;
                 Console.WriteLine("Telegram Bot запущен " + Bot.ToString());
@@ -72,7 +72,7 @@ namespace FermaTelegram
 
             catch (Exception ex)
             {
-                //Console.WriteLine(DateTime.Now.ToString() + "\n" + "Invalid Token KEY: " + ex.Message); // если ключ не подошел - пишем об этом в консоль отладки                 
+                Console.WriteLine(DateTime.Now.ToString() + "\n" + "Invalid Token KEY: " + ex.Message); // если ключ не подошел - пишем об этом в консоль отладки                 
                 if (_del != null)
                     _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
 

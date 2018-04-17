@@ -1,0 +1,5 @@
+17.04.2018 9:52:57 : FermaTelegram.TelegramBot : MoveNextПроизошла ошибка при отправке запроса.
+17.04.2018 9:55:11 : FermaTelegram.TelegramBot : MoveNextПроизошла ошибка при отправке запроса.
+17.04.2018 9:55:49 : FermaTelegram.TelegramBot : MoveNextПроизошла ошибка при отправке запроса.
+17.04.2018 9:58:14 : FermaTelegram.TelegramBot : MoveNextПроизошла ошибка при отправке запроса.
+17.04.2018 10:01:43 : FermaTelegram.TelegramBot : MoveNextПроизошла ошибка при отправке запроса.
