@@ -24,7 +24,7 @@ namespace FermaTelegram
         public TcpServer tcpServer;
         public TelegramBot telegramBot;
         public MakeParse makeParse;
-        public MailToCSV mailToCSV;        
+        public MailCommand mailToCSV;        
 
         public Task executeCommand;
         public Task averHashShare;
@@ -72,7 +72,7 @@ namespace FermaTelegram
 
             telegramBot.RegisterHandler(SaveLogMessage);
 
-            mailToCSV = new MailToCSV("pop.mail.ru", 995, true, "ale-san2006@mail.ru", "260686zvezda", "balance.txt");
+            mailToCSV = new MailCommand("pop.mail.ru", 995, true, "ale-san2006@mail.ru", "260686zvezda", "balance.txt");
 
             mailToCSV.RegisterHandler(SaveLogMessage);
 

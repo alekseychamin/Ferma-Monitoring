@@ -98,7 +98,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Mail\MailToTxt.cs" />
+    <Compile Include="Mail\MailCommand.cs" />
     <Compile Include="Main\Application.cs" />
     <Compile Include="Parser\ParserJson.cs" />
     <Compile Include="Parser\LoadHtml.cs" />

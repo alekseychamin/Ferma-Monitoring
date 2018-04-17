@@ -16,7 +16,7 @@ namespace FermaTelegram
         public ParserHtml parserEth;
         public ParserJson calcHashShare;
         private TelegramBot telegramBot;        
-        private MailToCSV mail;
+        private MailCommand mail;
 
         public delegate void SendErrorLog(string message);
         SendErrorLog _del;
@@ -28,7 +28,7 @@ namespace FermaTelegram
 
         public string resultParser;
 
-        public MakeParse(TelegramBot telegramBot, MailToCSV mail)
+        public MakeParse(TelegramBot telegramBot, MailCommand mail)
         {
             parserZec = new ParserHtml();
             parserZcl = new ParserHtml();
