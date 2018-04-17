@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<telegram>
+  <time time="time">    
+    <delayShowMessage_min>15</delayShowMessage_min>    
+  </time>
+  <network network="network">
+	<IPaddress>192.168.0.33</IPaddress>
+    <port>8085</port>	
+  </network>
+  <bot bot="bot">    
+    <chatID>134135020</chatID>
+	<token>375528804:AAFQV24VmEpu5zekFZGfP8tEqfBZchQpuJk</token>
+  </bot>
+ </telegram>
