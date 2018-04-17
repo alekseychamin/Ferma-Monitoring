@@ -103,7 +103,7 @@ namespace FermaTelegram
 
                             message.Text = message.Text + "\n" + "Количестов клиентов : " + listClient.Count;
 
-                            reply.Add(message);
+                            listMessage.reply.Add(message);
                         }
                         else
                             i++;

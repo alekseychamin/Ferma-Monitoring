@@ -21,6 +21,7 @@ namespace FermaTelegram
         private string username;
         private string password;
         private string filename;
+        public ListMessage listMessage;
         public Task fetchMailCommand;
         public Task sendMailToClient;
 
@@ -68,37 +69,13 @@ namespace FermaTelegram
                     {
                         MessageHeader headers = client.GetMessageHeaders(i);
                         RfcMailAddress from = headers.From;
-                        if (from.HasValidMailAddress && from.Address.Contains("noreply@suprnova.cc"))
+                        if (from.HasValidMailAddress && headers.Subject.Contains("command"))
                         {
                             DateTime date = Convert.ToDateTime(headers.Date);
                             Message message = client.GetMessage(i);
-                            //MessagePart plainText = message.FindFirstPlainTextVersion();                    
-
-                            BalanceMessage bMessage = new BalanceMessage();
-                            bMessage.date = date;
-                            bMessage.text = message.MessagePart.GetBodyAsText();
-
-                            Regex regex = new Regex(@"\d\.\d+");
-                            MatchCollection matches = regex.Matches(bMessage.text);
-
-                            try
-                            {
-                                NumberFormatInfo provider = new NumberFormatInfo();
-                                provider.NumberDecimalSeparator = ".";
-                                double amount = Convert.ToDouble(matches[0].Value, provider);
-                                bMessage.amount = amount;
-
-                                //Console.WriteLine(bMessage.date + " : " + bMessage.amount);                                
-                                client.DeleteMessage(i);
-                            }
-                            catch (Exception ex)
-                            {
-                                //Console.WriteLine(ex.Message);
-                                if (_del != null)
-                                    _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
-                                break;
-                            }
-
+                            //MessagePart plainText = message.FindFirstPlainTextVersion();                                                                            
+                            listMessage.command.Add(message.MessagePart.GetBodyAsText());
+                            client.DeleteMessage(i);
                         }
                     }
                     client.Disconnect();
@@ -109,11 +86,8 @@ namespace FermaTelegram
                     if (_del != null)
                         _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
                 }
-                client.Dispose();
-
-                
-
-                Thread.Sleep(1000 * 60 * 60);
+                client.Dispose();                
+                Thread.Sleep(1000 * 30 );
             }
         }
     }

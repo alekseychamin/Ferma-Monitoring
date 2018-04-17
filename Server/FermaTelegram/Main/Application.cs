@@ -80,9 +80,7 @@ namespace FermaTelegram
 
             CommandStatusEth commandStatusEth = new CommandStatusEth("/statusEth", makeParse);
             listCommand.Add(commandStatusEth);
-
-            CommandStatusZcl commandStatusZcl = new CommandStatusZcl("/statusZcl", makeParse);
-            listCommand.Add(commandStatusZcl);
+            
 
             executeCommand = new Task(ExecuteCommand);
             executeCommand.Start();

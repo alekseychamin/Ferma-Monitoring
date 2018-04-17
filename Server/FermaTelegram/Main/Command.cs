@@ -55,23 +55,5 @@ namespace FermaTelegram
             makeParser.TaskParseEth(name);
         }
 
-    }
-
-    class CommandStatusZcl : Command
-    {
-        private MakeParse makeParser;
-
-        public CommandStatusZcl(string _name, MakeParse makeParser) : base(_name)
-        {
-            name = _name;
-            this.makeParser = makeParser;
-        }
-
-        public override void Excecute()
-        {
-            makeParser.TaskParseZcl(name);
-        }
-
-    }
-
+    }    
 }
