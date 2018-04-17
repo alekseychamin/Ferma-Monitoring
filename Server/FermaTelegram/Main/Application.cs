@@ -15,19 +15,15 @@ namespace FermaTelegram
         public string filenameLog;
         public int port;
         public string IPaddress;
-        public int delayShowMessage;
-        public string token;
-        public long ChatId;
-        public long ChatIdWarning;
+        public int delayShowMessage;        
         public List<Command> listCommand;
+        public ListMessage listMessage;
 
-        public TcpServer tcpServer;
-        public TelegramBot telegramBot;
+        public TcpServer tcpServer;        
         public MakeParse makeParse;
-        public MailCommand mailToCSV;        
+        public MailCommand mailCommand;        
 
-        public Task executeCommand;
-        public Task averHashShare;
+        public Task executeCommand;        
 
 
         private void SaveLogMessage(string message)
@@ -67,27 +63,15 @@ namespace FermaTelegram
             tcpServer = new TcpServer(port, IPaddress);
 
             tcpServer.RegisterHandler(SaveLogMessage);
+            
 
-            telegramBot = new TelegramBot(token, tcpServer.listMessageFromTelegram, tcpServer.listMessageToTelegram);
+            mailCommand = new MailCommand("pop.mail.ru", 995, true, "ale-san2006@mail.ru", "260686zvezda");
 
-            telegramBot.RegisterHandler(SaveLogMessage);
+            mailCommand.RegisterHandler(SaveLogMessage);
 
-            mailToCSV = new MailCommand("pop.mail.ru", 995, true, "ale-san2006@mail.ru", "260686zvezda", "balance.txt");
+            listMessage = new ListMessage();
 
-            mailToCSV.RegisterHandler(SaveLogMessage);
-
-            makeParse = new MakeParse(telegramBot, mailToCSV);
-
-            makeParse.calcHashShare.RegisterHandler(SaveLogMessage);
-            makeParse.parserZcl.RegisterHandler(SaveLogMessage);
-            makeParse.parserZec.RegisterHandler(SaveLogMessage);
-
-            averHashShare = new Task(makeParse.calcHashShare.ParseJson);
-            averHashShare.Start();
-
-
-            telegramBot.ChatId = ChatId;
-            telegramBot.ChatIdWarning = ChatIdWarning;          
+            makeParse = new MakeParse(listMessage, mailCommand);            
             
             tcpServer.delayShowMessage = delayShowMessage;
 

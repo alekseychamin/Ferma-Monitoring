@@ -100,14 +100,12 @@
   <ItemGroup>
     <Compile Include="Mail\MailCommand.cs" />
     <Compile Include="Main\Application.cs" />
-    <Compile Include="Parser\ParserJson.cs" />
-    <Compile Include="Parser\LoadHtml.cs" />
+    <Compile Include="Main\ListMessage.cs" />
     <Compile Include="Parser\MakeParse.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TcpServer\ClientObject.cs" />
     <Compile Include="Main\Command.cs" />
-    <Compile Include="Parser\ParserHtml.cs" />
     <Compile Include="TcpServer\FermaMessage.cs" />
     <Compile Include="TcpServer\TcpServer.cs" />
     <Compile Include="Telegram\TelegramBot.cs" />
