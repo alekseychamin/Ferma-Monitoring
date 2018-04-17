@@ -53,6 +53,8 @@ namespace FermaTelegram
 
         public Application(string filenameSetting, string filenameLog)
         {
+            listMessage = new ListMessage();
+
             this.filenameSetting = filenameSetting;
             this.filenameLog = Directory.GetCurrentDirectory() + "\\" + filenameLog;
 
@@ -60,18 +62,16 @@ namespace FermaTelegram
 
             listCommand = new List<Command>();
 
-            tcpServer = new TcpServer(port, IPaddress);
+            tcpServer = new TcpServer(port, IPaddress, listMessage);
 
             tcpServer.RegisterHandler(SaveLogMessage);
             
 
             mailCommand = new MailCommand("pop.mail.ru", 995, true, "ale-san2006@mail.ru", "260686zvezda");
 
-            mailCommand.RegisterHandler(SaveLogMessage);
+            mailCommand.RegisterHandler(SaveLogMessage);            
 
-            listMessage = new ListMessage();
-
-            makeParse = new MakeParse(listMessage, mailCommand);            
+            makeParse = new MakeParse(listMessage);            
             
             tcpServer.delayShowMessage = delayShowMessage;
 

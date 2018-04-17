@@ -16,10 +16,8 @@ namespace FermaTelegram
         private int port;
 
         public int delayShowMessage;
-
-        public List<string> listMessageFromTelegram;
-        public List<FermaMessage> listMessageToTelegram;
-
+        public ListMessage listMessage;
+        
         public Socket listenSocket;
         public IPEndPoint ipPoint;
         public List<ClientObject> listClient;
@@ -33,10 +31,12 @@ namespace FermaTelegram
             _del = del;
         }
 
-        public TcpServer(int _port, string IPaddress)
+        public TcpServer(int _port, string IPaddress, ListMessage listMessage)
         {
 
             port = _port;
+            this.listMessage = listMessage;
+
             IPHostEntry ipEntry = Dns.GetHostEntry(Dns.GetHostName());
             IPAddress localAddr = IPAddress.Parse(IPaddress);
             // получаем адреса для запуска сокета
@@ -53,11 +53,7 @@ namespace FermaTelegram
 
             Console.WriteLine("Сервер запущен. Ожидание подключений по адресу : " + IPaddress + ":" + port);
 
-            listClient = new List<ClientObject>();            
-
-            listMessageFromTelegram = new List<string>();
-            listMessageToTelegram = new List<FermaMessage>();
-
+            listClient = new List<ClientObject>();                        
 
             Task getNewClient = new Task(GetNewClient);
             Task tcpSend = new Task(SendCommand);
@@ -107,7 +103,7 @@ namespace FermaTelegram
 
                             message.Text = message.Text + "\n" + "Количестов клиентов : " + listClient.Count;
 
-                            listMessageToTelegram.Add(message);
+                            reply.Add(message);
                         }
                         else
                             i++;
@@ -129,88 +125,67 @@ namespace FermaTelegram
 
             while (true)
             {
-                try
+                
+                int i = 0;
+                while (i < listMessage.command.Count)
                 {
-                    foreach (var command in listMessageFromTelegram.ToArray())
-                    {                        
-                        try
-                        {
-                            foreach (var client in listClient.ToArray())
-                            {
+                    string command = listMessage.command[i];
 
-                                FermaMessage message = new FermaMessage();
+                    int j = 0;
+                    while (j < listClient.Count)
+                    {
+                        ClientObject client = listClient[j];
 
-                                //message.NameFerma = name;
-                                //message.Date = DateTime.Now;
-                                message.Priority = 1;
-                                message.Text = command;
-                                message.Type = "command";
+                        FermaMessage message = new FermaMessage();
 
-                                if (client.SendData(message) > 0)
-                                    listMessageFromTelegram.Remove(command);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            //Console.WriteLine(DateTime.Now.ToString() + "error in FermaTelegram.TcpServer.SendCommand command" + ex.Message);
-                            if (_del != null)
-                                _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
-                            break;
-                        }
-                        
+                        //message.NameFerma = name;
+                        //message.Date = DateTime.Now;
+                        message.Priority = 1;
+                        message.Text = command;
+                        message.Type = "command";
+
+                        if (client.SendData(message) > 0)
+                            listMessage.command.Remove(command);
+                        else i++;
+
+                        j++;
                     }
-                }
-                catch (Exception ex)
-                {
-                    //Console.WriteLine(DateTime.Now.ToString() + "error in FermaTelegram.TcpServer.SendCommand client" + ex.Message);
-                    if (_del != null)
-                        _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
-                }
-                Thread.Sleep(100);
 
-            }
+                }
+
+
+                Thread.Sleep(100);
+            }                
+                
         }
 
         public void ReciveMessageFromClient()
         {
             while (true)
             {
-                try
+                int i = 0;
+                while (i < listClient.Count)
                 {
-                    foreach (var client in listClient.ToArray())
-                    {
-                        if (client != null)
-                        {
-                            try
-                            {
-                                foreach (var message in client.listMessage.ToArray())
-                                {
-                                    if (message != null)
-                                    {                                                                            
-                                        listMessageToTelegram.Add(message);
-                                        //Console.WriteLine(DateTime.Now.ToString() + " message to Telegram : array listMessageToTelegram.count " + listMessageToTelegram.Count + " -- " + message);
-                                        // добавить вызов метода для отправки сообщения в телеграмме
+                    ClientObject client = listClient[i];
 
-                                    }
-                                    client.listMessage.Remove(message);
-                                }
-                            }
-                            catch (Exception ex)
-                            {
-                                //Console.WriteLine(DateTime.Now.ToString() + "error in FermaTelegram.TcpServer.ReciveMessageFromClient message" + ex.Message);
-                                if (_del != null)
-                                    _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
-                                break;
-                            }
+                    if (client != null)
+                    {
+                        int j = 0;
+                        while (j < client.listMessage.Count)
+                        {
+                            FermaMessage message = client.listMessage[j];
+                            if (message != null)
+                                listMessage.reply.Add(message);
+
+                            client.listMessage.Remove(message);
                         }
+
+                        i++;
                     }
-                }
-                catch (Exception ex)
-                {
-                    //Console.WriteLine(DateTime.Now.ToString() + "error in FermaTelegram.TcpServer.ReciveMessageFromClient client" + ex.Message);
-                    if (_del != null)
-                        _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
-                }
+                    else
+                        listClient.Remove(client);
+                   }
+                
                 Thread.Sleep(100);
             }
         }

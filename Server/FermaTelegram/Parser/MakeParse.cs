@@ -178,7 +178,7 @@ namespace FermaTelegram
             mes.Priority = 3;
             mes.Text = res;
 
-            listMessage.FromClient.Add(mes);
+            listMessage.reply.Add(mes);
         }
     }
 }

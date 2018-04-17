@@ -22,6 +22,7 @@ namespace FermaTelegram
         private string password;
         private string filename;
         public Task fetchMailCommand;
+        public Task sendMailToClient;
 
         public delegate void SendErrorLog(string message);
         SendErrorLog _del;
