@@ -32,3 +32,14 @@
 18.04.2018 15:00:02 : FermaTelegram.MailCommand : FetchMailCommandServer is not available
 18.04.2018 15:00:41 : FermaTelegram.MailCommand : FetchMailCommandServer is not available
 18.04.2018 15:01:26 : FermaTelegram.MailCommand : FetchMailCommandServer is not available
+18.04.2018 17:23:17 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:23:48 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:24:20 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:24:52 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:25:23 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:26:47 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:27:19 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:27:51 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:28:22 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:28:54 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.
+18.04.2018 17:30:39 : FermaTelegram.MailCommand : FetchMailCommandСтрока не распознана как действительное значение DateTime.

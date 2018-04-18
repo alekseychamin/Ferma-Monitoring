@@ -71,25 +71,26 @@ namespace FermaTelegram
                     client.Authenticate(username, password);
 
                     messageCount = client.GetMessageCount();
-                    //Console.WriteLine("Count of emails :" + messageCount);
+                    Console.WriteLine("Count of emails :" + messageCount);
 
                     for (int i = 1; i <= messageCount; i++)
                     {
                         MessageHeader headers = client.GetMessageHeaders(i);
                         RfcMailAddress from = headers.From;
-                        if (from.HasValidMailAddress) //&& headers.Subject.Contains("command"))
+                        if (from.HasValidMailAddress && headers != null)
                         {
-                            DateTime date = Convert.ToDateTime(headers.Date);
-                            Message message = client.GetMessage(i);
+                            //DateTime date = Convert.ToDateTime(headers.Date);
+                            //Message message = client.GetMessage(i);
                             //Console.WriteLine("addr : " + from.MailAddress.Address);
                             fromEmailAddr.Add(from.MailAddress.Address.ToString());
-                            MessagePart plainText = message.FindFirstPlainTextVersion();
+                            //MessagePart plainText = message.FindFirstPlainTextVersion();
                             //string mes = plainText.GetBodyAsText().ToString();
                             //mes = mes.Trim();
                             string mes = headers.Subject.ToString();
                             mes = mes.ToLower();
 
-                            //Console.WriteLine("email message : " + mes);
+                            Console.WriteLine("email header : " + mes);
+
                             listMessage.commandFerma.Add(mes);
                             listMessage.commandServer.Add(mes);
                             client.DeleteMessage(i);
@@ -105,27 +106,35 @@ namespace FermaTelegram
                 }
                 client.Dispose();                
 
-                Thread.Sleep(1000 * 30 );
+                Thread.Sleep(1000 * 15 );
             }
         }
 
         private void SendMail(string bodyText, string subject, string fromEmailAddr, string fermaEmailAddr)
         {
-            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+            try
+            {
+                SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
 
-            MailAddress to = new MailAddress(fromEmailAddr);
-            MailAddress from = new MailAddress(fermaEmailAddr);
-            MailMessage msg = new MailMessage();
+                MailAddress to = new MailAddress(fromEmailAddr);
+                MailAddress from = new MailAddress(fermaEmailAddr);
+                MailMessage msg = new MailMessage();
 
-            msg.To.Add(to);
-            msg.From = from;
-            msg.BodyEncoding = Encoding.UTF8;
-            msg.IsBodyHtml = false;
-            msg.Subject = subject;
-            msg.Body = bodyText;
-            c.Credentials = new System.Net.NetworkCredential(fermaEmailAddr, password);
-            c.EnableSsl = true;
-            c.Send(msg);
+                msg.To.Add(to);
+                msg.From = from;
+                msg.BodyEncoding = Encoding.UTF8;
+                msg.IsBodyHtml = false;
+                msg.Subject = subject;
+                msg.Body = bodyText;
+                c.Credentials = new System.Net.NetworkCredential(fermaEmailAddr, password);
+                c.EnableSsl = true;
+                c.Send(msg);
+            }
+            catch (Exception ex)
+            {
+                if (_del != null)
+                    _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
+            }
         }
 
         public void SendMailReply()
@@ -155,7 +164,7 @@ namespace FermaTelegram
                     listMessage.reply.Remove(message);
                 }
 
-                Thread.Sleep(1000);
+                Thread.Sleep(5000);
             }
         }
     }

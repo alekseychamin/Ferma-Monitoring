@@ -77,10 +77,10 @@ namespace FermaTelegram
             
             tcpServer.delayShowMessage = delayShowMessage;
 
-            CommandStatusZec commandStatusZec = new CommandStatusZec("/status", makeParse);
+            CommandStatusZec commandStatusZec = new CommandStatusZec("status", makeParse);
             listCommand.Add(commandStatusZec);
 
-            CommandStatusEth commandStatusEth = new CommandStatusEth("/statusEth", makeParse);
+            CommandStatusEth commandStatusEth = new CommandStatusEth("statusEth", makeParse);
             listCommand.Add(commandStatusEth);
             
 
