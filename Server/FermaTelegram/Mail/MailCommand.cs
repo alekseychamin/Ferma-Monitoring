@@ -54,8 +54,8 @@ namespace FermaTelegram
             fetchMailCommand = new Task(FetchMailCommand);
             fetchMailCommand.Start();
 
-            sendMailToClient = new Task(SendMailReply);
-            sendMailToClient.Start();
+            //sendMailToClient = new Task(SendMailReply);
+            //sendMailToClient.Start();
         }        
 
         public void FetchMailCommand()
@@ -63,7 +63,8 @@ namespace FermaTelegram
             while (true)
             {
                 int messageCount = 0;
-                
+                fromEmailAddr.Clear();
+
                 Pop3Client client = new Pop3Client();
                 try
                 {
@@ -104,7 +105,9 @@ namespace FermaTelegram
                     if (_del != null)
                         _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
                 }
-                client.Dispose();                
+                client.Dispose();
+
+                SendMailReply();
 
                 Thread.Sleep(1000 * 15 );
             }
@@ -139,35 +142,34 @@ namespace FermaTelegram
 
         public void SendMailReply()
         {
-            while (true)
+           
+            int i = 0;
+            while (i < listMessage.reply.Count)
             {
-                int i = 0;
-                while (i < listMessage.reply.Count)
+                FermaMessage message = listMessage.reply[i];
+
+                if (message.Priority == 3)
                 {
-                    FermaMessage message = listMessage.reply[i];
-
-                    if (message.Priority == 3)
-                    {
-                        int j = 0;
-                        while (j < fromEmailAddr.Count)
-                        {
-                            SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
-                                    fromEmailAddr[j], fermaEmailAddr);
-
-                            fromEmailAddr.RemoveAt(j);
-                        }
-                    }
-                    else
+                    int j = 0;
+                    while (j < fromEmailAddr.Count)
                     {
                         SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
-                                alertEmailAddr, fermaEmailAddr);
-                    }
+                                fromEmailAddr[j], fermaEmailAddr);
 
-                    listMessage.reply.Remove(message);
+                        fromEmailAddr.RemoveAt(j);                        
+                    }
+                }
+                else
+                {
+                    SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
+                            alertEmailAddr, fermaEmailAddr);
                 }
 
-                Thread.Sleep(1000);
+                listMessage.reply.Remove(message);
             }
+
+            //Thread.Sleep(1000);
+            
         }
     }
 }
