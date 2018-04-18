@@ -71,7 +71,7 @@ namespace FermaTelegram
                     client.Authenticate(username, password);
 
                     messageCount = client.GetMessageCount();
-                    Console.WriteLine("Count of emails :" + messageCount);
+                    //Console.WriteLine("Count of emails :" + messageCount);
 
                     for (int i = 1; i <= messageCount; i++)
                     {
@@ -81,12 +81,12 @@ namespace FermaTelegram
                         {
                             DateTime date = Convert.ToDateTime(headers.Date);
                             Message message = client.GetMessage(i);
-                            Console.WriteLine("addr : " + from.MailAddress.Address);
+                            //Console.WriteLine("addr : " + from.MailAddress.Address);
                             fromEmailAddr.Add(from.MailAddress.Address.ToString());
                             MessagePart plainText = message.FindFirstPlainTextVersion();
                             string mes = plainText.GetBodyAsText().ToString();
                             mes = mes.Trim();
-                            Console.WriteLine("email message : " + mes);
+                            //Console.WriteLine("email message : " + mes);
                             listMessage.commandFerma.Add(mes);
                             listMessage.commandServer.Add(mes);
                             client.DeleteMessage(i);
@@ -116,7 +116,8 @@ namespace FermaTelegram
 
             msg.To.Add(to);
             msg.From = from;
-            msg.IsBodyHtml = true;
+            msg.BodyEncoding = Encoding.UTF8;
+            msg.IsBodyHtml = false;
             msg.Subject = subject;
             msg.Body = bodyText;
             c.Credentials = new System.Net.NetworkCredential(fermaEmailAddr, password);

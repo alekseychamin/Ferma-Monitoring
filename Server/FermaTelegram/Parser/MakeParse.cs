@@ -86,21 +86,21 @@ namespace FermaTelegram
                 currentHashrate3 = currentHashrate3 / 1000;
 
                 string res =
-                             "Текущая скорость  = " + "*" + currentHashrate.ToString("0.00") + "kH/s" + "*" + "\n" +
-                             "Средняя скорость = " + "*" + averageHashrate.ToString("0.00") + "kH/s" + "*" + "\n" +
+                             "Текущая скорость  = " + currentHashrate.ToString("0.00") + "kH/s" + "\n" +
+                             "Средняя скорость = " + averageHashrate.ToString("0.00") + "kH/s" + "\n" +
                              "Текущая скорость ferma1 = " + currentHashrate1.ToString("0.00") + "kH/s" + "\n" +
                              "Текущая скорость ferma2 = " + currentHashrate2.ToString("0.00") + "kH/s" + "\n" +
                              "Текущая скорость ferma3 = " + currentHashrate3.ToString("0.00") + "kH/s" + "\n" +
-                             "Невыплаченный баланс = " + "*" + unpaid.ToString("0.000") + "ZEC" + "*" + "\n" +
-                             "Заработок за день = " + "*" + paidUSD.ToString("0.00") + "$" + "*" + "/" + "*" + paidZEC.ToString("0.00") + "*" + "ZEC" + "\n" +
-                             "Заработок в месяц = " + "*" + usdMounthPaid.ToString("0") + "$" + "*" + "/" + "*" + coinsMounthPaid.ToString("0.00") + "*" + "ZEC" + "\n" +
-                             "Расчетный курс ZEC/USD = " + "*" + course.ToString("0") + "*" + "$";
+                             "Невыплаченный баланс = " + unpaid.ToString("0.000") + "ZEC" + "\n" +
+                             "Заработок за день = " + paidUSD.ToString("0.00") + "$" + "/" + paidZEC.ToString("0.00") + "ZEC" + "\n" +
+                             "Заработок в месяц = " + usdMounthPaid.ToString("0") + "$" + "/" + coinsMounthPaid.ToString("0.00") + "ZEC" + "\n" +
+                             "Расчетный курс ZEC/USD = " + course.ToString("0") + "$";
 
                 //Console.WriteLine(res);
 
                 FermaMessage mes = new FermaMessage();
                 mes.NameCommand = name;
-                mes.NameFerma = "Telegram";
+                mes.NameFerma = "Server";
                 mes.Date = DateTime.Now;
                 mes.Priority = 3;
                 mes.Text = res;
@@ -159,15 +159,15 @@ namespace FermaTelegram
             currentHashrate3 = currentHashrate3 / Math.Pow(10, 6);
 
             string res =
-                         "Текущая скорость  = " + "*" + currentHashrate.ToString("0.00") + " MH/s" + "*" + "\n" +
-                         "Средняя скорость = " + "*" + averageHashrate.ToString("0.00") + " MH/s" + "*" + "\n" +
+                         "Текущая скорость  = " + currentHashrate.ToString("0.00") + " MH/s" + "\n" +
+                         "Средняя скорость = " + averageHashrate.ToString("0.00") + " MH/s" + "\n" +
                          "Текущая скорость ferma 1 = " + currentHashrate1.ToString("0.00") + " MH/s" + "\n" +
                          "Текущая скорость ferma 2 = " + currentHashrate2.ToString("0.00") + " MH/s" + "\n" +
                          "Текущая скорость ferma 3 = " + currentHashrate3.ToString("0.00") + " MH/s" + "\n" +
                          //"Невыплаченный баланс = " + "*" + unpaid.ToString("0.00000") + " ZEC" + "*" + "\n" +
-                         "Заработок за день = " + "*" + paidUSD.ToString("0.00") + "$" + "*" + "/" + "*" + paidZEC.ToString("0.0000") + "*" + " ETH" + "\n" +
-                         "Заработок в месяц = " + "*" + usdMounthPaid.ToString("0.00") + "$" + "*" + "/" + "*" + coinsMounthPaid.ToString("0.00") + "*" + " ETH" + "\n" +
-                         "Расчетный курс ETH/USD = " + "*" + course.ToString("0.0") + "*" + "$";
+                         "Заработок за день = " + paidUSD.ToString("0.00") + "$" + "/" + paidZEC.ToString("0.0000") + " ETH" + "\n" +
+                         "Заработок в месяц = " + usdMounthPaid.ToString("0.00") + "$" + "/" + coinsMounthPaid.ToString("0.00") + " ETH" + "\n" +
+                         "Расчетный курс ETH/USD = " + course.ToString("0.0") + "$";
 
             //Console.WriteLine(res);
 
