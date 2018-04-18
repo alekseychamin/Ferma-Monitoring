@@ -77,15 +77,18 @@ namespace FermaTelegram
                     {
                         MessageHeader headers = client.GetMessageHeaders(i);
                         RfcMailAddress from = headers.From;
-                        if (from.HasValidMailAddress && headers.Subject.Contains("command"))
+                        if (from.HasValidMailAddress) //&& headers.Subject.Contains("command"))
                         {
                             DateTime date = Convert.ToDateTime(headers.Date);
                             Message message = client.GetMessage(i);
                             //Console.WriteLine("addr : " + from.MailAddress.Address);
                             fromEmailAddr.Add(from.MailAddress.Address.ToString());
                             MessagePart plainText = message.FindFirstPlainTextVersion();
-                            string mes = plainText.GetBodyAsText().ToString();
-                            mes = mes.Trim();
+                            //string mes = plainText.GetBodyAsText().ToString();
+                            //mes = mes.Trim();
+                            string mes = headers.Subject.ToString();
+                            mes = mes.ToLower();
+
                             //Console.WriteLine("email message : " + mes);
                             listMessage.commandFerma.Add(mes);
                             listMessage.commandServer.Add(mes);
