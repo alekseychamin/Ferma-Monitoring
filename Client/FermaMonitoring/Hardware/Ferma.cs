@@ -483,7 +483,7 @@ namespace FermaMonitoring
             String res = "";
             foreach (var videocard in listVideoCard.ToArray())
             {
-                res = res + videocard.name + ": " + "t = " + "*" + videocard.temperature + "*" + " C" + "\n";
+                res = res + videocard.name + ": " + "t = " + videocard.temperature + " C" + "\n";
             }
 
             res = GetTimeWorkMiner() + "\n" + res;                
@@ -501,7 +501,7 @@ namespace FermaMonitoring
                 if (videocard.temperature > maxTemp)
                 {
                     maxTemp = videocard.temperature;
-                    res = videocard.name + ": " + "t = " + "*" + videocard.temperature + "*" + " C";
+                    res = videocard.name + ": " + "t = " + videocard.temperature + " C";
                 }
             }             
 
@@ -515,7 +515,7 @@ namespace FermaMonitoring
             String res = "";
             foreach (var videocard in listVideoCard.ToArray())
             {
-                res = res + videocard.name + ": " + "vent = " + "*" + videocard.control + "*" + " %" + "\n";
+                res = res + videocard.name + ": " + "vent = " + videocard.control + " %" + "\n";
             }
 
             res = GetTimeWorkMiner() + "\n" + res;

@@ -52,7 +52,7 @@ namespace FermaMonitoring
             {
                 if (temperature >= hiTemp)
                 {
-                    string message = name + " высокая температура " + "t = " + "*" + temperature + "*" + " C" + " обороты с = " + control + " %";
+                    string message = name + " высокая температура " + "t = " + temperature + " C" + " обороты с = " + control + " %";
                     listMessage.Add(message);
                     Thread.Sleep(delayShowMessage);
                 } 
@@ -67,7 +67,7 @@ namespace FermaMonitoring
             {
                 if (temperature <= loTemp)
                 {
-                    string message = name + " низкая температура " + "t = " + "*" + temperature + "*" + " C" + " обороты с = " + control + " %";
+                    string message = name + " низкая температура " + "t = " + temperature + " C" + " обороты с = " + control + " %";
                     listMessage.Add(message);
                     Thread.Sleep(delayShowMessage);
                 }
@@ -82,7 +82,7 @@ namespace FermaMonitoring
             {
                 if ((control >= hiCont) & (temperature >= hiTemp))
                 {
-                    string message = name + " высокие обороты " + "c = " + "*" + control + "*" + " %" + " температура t = " + temperature + " C";
+                    string message = name + " высокие обороты " + "c = " + control + " %" + " температура t = " + temperature + " C";
                     listMessage.Add(message);
                     Thread.Sleep(delayShowMessage);
                 }
@@ -97,7 +97,7 @@ namespace FermaMonitoring
             {
                 if ((control <= loCont) & (temperature >= loContTemp))
                 {
-                    string message = name + " низкие обороты " + "c = " + "*" + control + "*" + " %" + " температура t = " + temperature + " C";
+                    string message = name + " низкие обороты " + "c = " + control + " %" + " температура t = " + temperature + " C";
                     listMessage.Add(message);
                     Thread.Sleep(delayShowMessage);
                 }

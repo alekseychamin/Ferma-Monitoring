@@ -151,20 +151,22 @@ namespace FermaTelegram
                         int j = 0;
                         while (j < fromEmailAddr.Count)
                         {
-                            SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand, fromEmailAddr[j], fermaEmailAddr);
+                            SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
+                                    fromEmailAddr[j], fermaEmailAddr);
 
                             fromEmailAddr.RemoveAt(j);
                         }
                     }
                     else
                     {
-                        SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand, alertEmailAddr, fermaEmailAddr);
+                        SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
+                                alertEmailAddr, fermaEmailAddr);
                     }
 
                     listMessage.reply.Remove(message);
                 }
 
-                Thread.Sleep(5000);
+                Thread.Sleep(1000);
             }
         }
     }
