@@ -68,7 +68,7 @@ namespace FermaTelegram
             tcpServer.RegisterHandler(SaveLogMessage);
             
 
-            mailCommand = new MailCommand("imap.gmail.com", 993, true, "fermaalnik@gmail.com", "Jowfyerbarbujd2");
+            mailCommand = new MailCommand("pop.gmail.com", 995, true, "fermaalnik@gmail.com", "Jowfyerbarbujd2");
             mailCommand.listMessage = listMessage;
 
             mailCommand.RegisterHandler(SaveLogMessage);            

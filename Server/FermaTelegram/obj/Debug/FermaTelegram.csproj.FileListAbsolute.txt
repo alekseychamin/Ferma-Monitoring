@@ -85,4 +85,3 @@ D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\AngleSharp.
 D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\Newtonsoft.Json.xml
 D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\System.Net.Http.Formatting.xml
 D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\bin\Debug\Telegram.Bot.xml
-D:\Project C#\GitHub\Ferma-Monitoring\Server\FermaTelegram\obj\Debug\FermaTelegram.csprojResolveAssemblyReference.cache

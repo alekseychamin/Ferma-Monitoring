@@ -24,7 +24,7 @@ namespace FermaTelegram
         private string filename;
         private string fermaEmailAddr = "fermaalnik@gmail.com";
         private List<string> fromEmailAddr = new List<string>();
-        private string alertEmailAddr;
+        private string alertEmailAddr = "aleksey.chamin@gmail.com";
         public ListMessage listMessage;
         public Task fetchMailCommand;
         public Task sendMailToClient;
@@ -71,6 +71,7 @@ namespace FermaTelegram
                     client.Authenticate(username, password);
 
                     messageCount = client.GetMessageCount();
+                    Console.WriteLine("Count of emails :" + messageCount);
 
                     for (int i = 1; i <= messageCount; i++)
                     {
@@ -90,12 +91,11 @@ namespace FermaTelegram
                 }
                 catch (Exception ex)
                 {
-                    //Console.WriteLine(ex.Message);
+                    Console.WriteLine(ex.Message);
                     if (_del != null)
                         _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
                 }
-                client.Dispose();
-                SendMailReply();
+                client.Dispose();                
 
                 Thread.Sleep(1000 * 30 );
             }
@@ -115,7 +115,7 @@ namespace FermaTelegram
                         int j = 0;
                         while (j < fromEmailAddr.Count)
                         {
-                            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+                            SmtpClient c = new SmtpClient("smtp.gmail.com", 465);
                             MailAddress add = new MailAddress(fromEmailAddr[j]);
                             MailMessage msg = new MailMessage();
                             msg.To.Add(add);
@@ -131,7 +131,7 @@ namespace FermaTelegram
                     }
                     else
                     {
-                        SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+                        SmtpClient c = new SmtpClient("smtp.gmail.com", 465);
                         MailAddress add = new MailAddress(alertEmailAddr);
                         MailMessage msg = new MailMessage();
                         msg.To.Add(add);

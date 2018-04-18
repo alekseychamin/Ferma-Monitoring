@@ -9,3 +9,7 @@
 17.04.2018 13:09:37 : Невозможно соединиться с удаленным сервером
 17.04.2018 13:10:58 : Невозможно соединиться с удаленным сервером
 17.04.2018 15:45:58 : FermaTelegram.TelegramBot : MoveNextПроизошла ошибка при отправке запроса.
+18.04.2018 14:15:51 : FermaTelegram.MailCommand : FetchMailCommandServer is not available
+18.04.2018 14:25:56 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:29:09 : FermaTelegram.MailCommand : FetchMailCommandThe messageNumber argument cannot have a value of zero or less. Valid messageNumber is in the range [1, messageCount]
