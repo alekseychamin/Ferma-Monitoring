@@ -89,14 +89,14 @@ namespace FermaTelegram
                             Console.WriteLine("email message : " + mes);
                             listMessage.commandFerma.Add(mes);
                             listMessage.commandServer.Add(mes);
-                            //client.DeleteMessage(i);
+                            client.DeleteMessage(i);
                         }
                     }
                     client.Disconnect();
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    //Console.WriteLine(ex.Message);
                     if (_del != null)
                         _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
                 }
@@ -104,6 +104,24 @@ namespace FermaTelegram
 
                 Thread.Sleep(1000 * 30 );
             }
+        }
+
+        private void SendMail(string bodyText, string subject, string fromEmailAddr, string fermaEmailAddr)
+        {
+            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+
+            MailAddress to = new MailAddress(fromEmailAddr);
+            MailAddress from = new MailAddress(fermaEmailAddr);
+            MailMessage msg = new MailMessage();
+
+            msg.To.Add(to);
+            msg.From = from;
+            msg.IsBodyHtml = true;
+            msg.Subject = subject;
+            msg.Body = bodyText;
+            c.Credentials = new System.Net.NetworkCredential(fermaEmailAddr, password);
+            c.EnableSsl = true;
+            c.Send(msg);
         }
 
         public void SendMailReply()
@@ -120,37 +138,14 @@ namespace FermaTelegram
                         int j = 0;
                         while (j < fromEmailAddr.Count)
                         {
-                            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
-
-                            MailAddress to = new MailAddress(fromEmailAddr[j]);
-                            MailAddress from = new MailAddress(fermaEmailAddr);
-                            MailMessage msg = new MailMessage();
-
-                            msg.To.Add(to);
-                            msg.From = from;
-                            msg.IsBodyHtml = true;
-                            msg.Subject = listMessage.reply[i].NameCommand;
-                            msg.Body = listMessage.reply[i].Text;
-                            c.Credentials = new System.Net.NetworkCredential(fermaEmailAddr, password);
-                            c.EnableSsl = true;
-                            c.Send(msg);
+                            SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand, fromEmailAddr[j], fermaEmailAddr);
 
                             fromEmailAddr.RemoveAt(j);
                         }
                     }
                     else
                     {
-                        SmtpClient c = new SmtpClient("smtp.gmail.com", 465);
-                        MailAddress add = new MailAddress(alertEmailAddr);
-                        MailMessage msg = new MailMessage();
-                        msg.To.Add(add);
-                        msg.From = new MailAddress(fermaEmailAddr);
-                        msg.IsBodyHtml = true;
-                        msg.Subject = listMessage.reply[i].NameFerma + listMessage.reply[i].NameCommand;
-                        msg.Body = listMessage.reply[i].Text;
-                        c.Credentials = new System.Net.NetworkCredential(alertEmailAddr, password);
-                        c.EnableSsl = true;
-                        c.Send(msg);
+                        SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand, alertEmailAddr, fermaEmailAddr);
                     }
 
                     listMessage.reply.Remove(message);
