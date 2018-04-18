@@ -24,7 +24,7 @@ namespace FermaTelegram
         //private string filename;
         private string fermaEmailAddr = "fermaalnik@gmail.com";
         private string fromEmailAddr;
-        private string alertEmailAddr = "ale-san2006@mail.ru";
+        private string alertEmailAddr = "aleksey.chamin@gmail.com";
         public ListMessage listMessage;
         public Task fetchMailCommand;
         public Task sendMailToClient;
