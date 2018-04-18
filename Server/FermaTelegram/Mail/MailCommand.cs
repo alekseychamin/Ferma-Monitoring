@@ -22,6 +22,9 @@ namespace FermaTelegram
         private string username;
         private string password;
         private string filename;
+        private string fermaEmailAddr = "fermaalnik@gmail.com";
+        private List<string> fromEmailAddr = new List<string>();
+        private string alertEmailAddr;
         public ListMessage listMessage;
         public Task fetchMailCommand;
         public Task sendMailToClient;
@@ -74,6 +77,7 @@ namespace FermaTelegram
                         {
                             DateTime date = Convert.ToDateTime(headers.Date);
                             Message message = client.GetMessage(i);
+                            fromEmailAddr.Add(from.MailAddress.ToString());
                             //MessagePart plainText = message.FindFirstPlainTextVersion();                                                                            
                             listMessage.command.Add(message.MessagePart.GetBodyAsText());
                             client.DeleteMessage(i);
@@ -87,24 +91,61 @@ namespace FermaTelegram
                     if (_del != null)
                         _del(this.GetType().ToString() + " : " + System.Reflection.MethodBase.GetCurrentMethod().Name + ex.Message);
                 }
-                client.Dispose();                
+                client.Dispose();
+                SendMailReply();
+
                 Thread.Sleep(1000 * 30 );
             }
         }
 
         public void SendMailReply()
         {
-            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
-            MailAddress add = new MailAddress(txtReceiverEmailAddr.Text);
-            MailMessage msg = new MailMessage();
-            msg.To.Add(add);
-            msg.From = new MailAddress(txtYourEmailAddr.Text);
-            msg.IsBodyHtml = true;
-            msg.Subject = txtSubject.Text;
-            msg.Body = txtBody.Text;
-            c.Credentials = new System.Net.NetworkCredential(txtYourEmailAddr.Text, txtYourPassword.Text);
-            c.EnableSsl = true;
-            c.Send(msg);
+            while (true)
+            {
+                int i = 0;
+                while (i < listMessage.reply.Count)
+                {
+                    FermaMessage message = listMessage.reply[i];
+
+                    if (message.Priority == 3)
+                    {
+                        int j = 0;
+                        while (j < fromEmailAddr.Count)
+                        {
+                            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+                            MailAddress add = new MailAddress(fromEmailAddr[j]);
+                            MailMessage msg = new MailMessage();
+                            msg.To.Add(add);
+                            msg.From = new MailAddress(fermaEmailAddr);
+                            msg.IsBodyHtml = true;
+                            msg.Subject = listMessage.reply[i].NameCommand;
+                            msg.Body = listMessage.reply[i].Text;
+                            c.Credentials = new System.Net.NetworkCredential(fromEmailAddr[j], password);
+                            c.EnableSsl = true;
+                            c.Send(msg);
+                            fromEmailAddr.RemoveAt(j);
+                        }
+                    }
+                    else
+                    {
+                        SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+                        MailAddress add = new MailAddress(alertEmailAddr);
+                        MailMessage msg = new MailMessage();
+                        msg.To.Add(add);
+                        msg.From = new MailAddress(fermaEmailAddr);
+                        msg.IsBodyHtml = true;
+                        msg.Subject = listMessage.reply[i].NameFerma + listMessage.reply[i].NameCommand;
+                        msg.Body = listMessage.reply[i].Text;
+                        c.Credentials = new System.Net.NetworkCredential(alertEmailAddr, password);
+                        c.EnableSsl = true;
+                        c.Send(msg);
+                    }
+
+                    listMessage.reply.Remove(message);
+                }
+
+                Thread.Sleep(1000);
+            }
         }
     }
 }
