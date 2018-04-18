@@ -145,15 +145,17 @@ namespace FermaTelegram
                 while (i < listMessage.reply.Count)
                 {
                     FermaMessage message = listMessage.reply[i];
+                    string sub = message.Date + message.NameCommand + " " + message.NameFerma;
 
                     if (message.Priority == 3)
-                    {                                                
-                        SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
+                    {
+                        
+                        SendMail(listMessage.reply[i].Text, sub, 
                                 fromEmailAddr, fermaEmailAddr);                                                
                     }
                     else
                     {
-                        SendMail(listMessage.reply[i].Text, listMessage.reply[i].NameCommand + listMessage.reply[i].NameFerma, 
+                        SendMail(listMessage.reply[i].Text, "Warning " + sub, 
                                 alertEmailAddr, fermaEmailAddr);
                     }
 
