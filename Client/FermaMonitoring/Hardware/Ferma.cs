@@ -63,16 +63,16 @@ namespace FermaMonitoring
 
             modbusTCP = new ModbusTCP(this, this.IPaddrClient);
 
-            CommandTemp comTemp = new CommandTemp("/temp", this);
+            CommandTemp comTemp = new CommandTemp("temp", this);
             listCommand.Add(comTemp);
 
-            CommandMaxTemp comMaxTemp = new CommandMaxTemp("/maxtemp", this);
+            CommandMaxTemp comMaxTemp = new CommandMaxTemp("maxtemp", this);
             listCommand.Add(comMaxTemp);
 
-            CommandCont comCont = new CommandCont("/vent", this);
+            CommandCont comCont = new CommandCont("vent", this);
             listCommand.Add(comCont);
 
-            CommandStop comStop = new CommandStop("/stop", this);
+            CommandStop comStop = new CommandStop("stop", this);
             listCommand.Add(comStop);
 
             CommandMiner comZECMiner = new CommandMiner("/ZEC", this, "ZEC");
@@ -430,14 +430,14 @@ namespace FermaMonitoring
                         string mes = videocard.listMessage[i];
                         if (mes != "")
                         {
-                            mesVideoCard = mesVideoCard + mes + "\n";
-                            videocard.listMessage.Remove(mes);
+                            mesVideoCard = mesVideoCard + mes + "\n";                            
                         }
+                        videocard.listMessage.Remove(mes);
                     }                    
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(DateTime.Now.ToString() + " error in UpDateGPUInformation count of element >");
+                    Console.WriteLine(DateTime.Now.ToString() + " error in UpDateGPUInformation count of element >" + ex.Message);
                     break;
                 }
             }
