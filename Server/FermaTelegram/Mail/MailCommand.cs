@@ -53,6 +53,9 @@ namespace FermaTelegram
            
             fetchMailCommand = new Task(FetchMailCommand);
             fetchMailCommand.Start();
+
+            sendMailToClient = new Task(SendMailReply);
+            sendMailToClient.Start();
         }        
 
         public void FetchMailCommand()
