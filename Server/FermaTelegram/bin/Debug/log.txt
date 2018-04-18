@@ -13,3 +13,22 @@
 18.04.2018 14:25:56 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
 Имя параметра: bytes
 18.04.2018 14:29:09 : FermaTelegram.MailCommand : FetchMailCommandThe messageNumber argument cannot have a value of zero or less. Valid messageNumber is in the range [1, messageCount]
+18.04.2018 14:39:22 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:45:08 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:46:54 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:50:36 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:52:25 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:54:08 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:55:39 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 14:58:09 : FermaTelegram.MailCommand : FetchMailCommandМассив не может быть неопределенным.
+Имя параметра: bytes
+18.04.2018 15:00:02 : FermaTelegram.MailCommand : FetchMailCommandServer is not available
+18.04.2018 15:00:41 : FermaTelegram.MailCommand : FetchMailCommandServer is not available
+18.04.2018 15:01:26 : FermaTelegram.MailCommand : FetchMailCommandServer is not available

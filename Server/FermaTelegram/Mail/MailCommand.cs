@@ -81,10 +81,15 @@ namespace FermaTelegram
                         {
                             DateTime date = Convert.ToDateTime(headers.Date);
                             Message message = client.GetMessage(i);
-                            fromEmailAddr.Add(from.MailAddress.ToString());
-                            //MessagePart plainText = message.FindFirstPlainTextVersion();                                                                            
-                            listMessage.command.Add(message.MessagePart.GetBodyAsText());
-                            client.DeleteMessage(i);
+                            Console.WriteLine("addr : " + from.MailAddress.Address);
+                            fromEmailAddr.Add(from.MailAddress.Address.ToString());
+                            MessagePart plainText = message.FindFirstPlainTextVersion();
+                            string mes = plainText.GetBodyAsText().ToString();
+                            mes = mes.Trim();
+                            Console.WriteLine("email message : " + mes);
+                            listMessage.commandFerma.Add(mes);
+                            listMessage.commandServer.Add(mes);
+                            //client.DeleteMessage(i);
                         }
                     }
                     client.Disconnect();
@@ -115,17 +120,21 @@ namespace FermaTelegram
                         int j = 0;
                         while (j < fromEmailAddr.Count)
                         {
-                            SmtpClient c = new SmtpClient("smtp.gmail.com", 465);
-                            MailAddress add = new MailAddress(fromEmailAddr[j]);
+                            SmtpClient c = new SmtpClient("smtp.gmail.com", 587);
+
+                            MailAddress to = new MailAddress(fromEmailAddr[j]);
+                            MailAddress from = new MailAddress(fermaEmailAddr);
                             MailMessage msg = new MailMessage();
-                            msg.To.Add(add);
-                            msg.From = new MailAddress(fermaEmailAddr);
+
+                            msg.To.Add(to);
+                            msg.From = from;
                             msg.IsBodyHtml = true;
                             msg.Subject = listMessage.reply[i].NameCommand;
                             msg.Body = listMessage.reply[i].Text;
-                            c.Credentials = new System.Net.NetworkCredential(fromEmailAddr[j], password);
+                            c.Credentials = new System.Net.NetworkCredential(fermaEmailAddr, password);
                             c.EnableSsl = true;
                             c.Send(msg);
+
                             fromEmailAddr.RemoveAt(j);
                         }
                     }

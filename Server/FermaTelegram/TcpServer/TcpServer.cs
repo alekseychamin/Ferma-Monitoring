@@ -126,9 +126,9 @@ namespace FermaTelegram
             {
                 
                 int i = 0;
-                while (i < listMessage.command.Count)
+                while (i < listMessage.commandFerma.Count)
                 {
-                    string command = listMessage.command[i];
+                    string command = listMessage.commandFerma[i];
 
                     int j = 0;
                     while (j < listClient.Count)
@@ -143,13 +143,13 @@ namespace FermaTelegram
                         message.Text = command;
                         message.Type = "command";
 
-                        if (client.SendData(message) > 0)
-                            listMessage.command.Remove(command);
-                        else i++;
+                        client.SendData(message);                            
+                        
 
                         j++;
                     }
 
+                    listMessage.commandFerma.Remove(command);
                 }
 
 

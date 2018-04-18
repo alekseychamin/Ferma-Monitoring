@@ -166,9 +166,10 @@ namespace FermaTelegram
                 int i = 0;
                 string message;
 
-                while (i < listMessage.command.Count)
+                while (i < listMessage.commandServer.Count)
                 {
-                    message = listMessage.command[i];
+                    message = listMessage.commandServer[i];
+                    Console.WriteLine("command : " + message);
 
                     foreach (var command in listCommand)
                     {
@@ -177,7 +178,7 @@ namespace FermaTelegram
                             command.Excecute();
                         }
                     }
-                    listMessage.command.Remove(message);
+                    listMessage.commandServer.Remove(message);
                 }
                 
                 Thread.Sleep(100);
