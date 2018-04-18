@@ -143,13 +143,16 @@ namespace FermaTelegram
                         message.Text = command;
                         message.Type = "command";
 
-                        client.SendData(message);                            
-                        
+                        if (client.SendData(message) > 0)
+                            listMessage.commandFerma.Remove(command);
+                        else
+                            i++;
+
 
                         j++;
                     }
 
-                    listMessage.commandFerma.Remove(command);
+                    
                 }
 
 
