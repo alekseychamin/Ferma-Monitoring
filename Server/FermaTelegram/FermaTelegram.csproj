@@ -108,7 +108,6 @@
     <Compile Include="Main\Command.cs" />
     <Compile Include="TcpServer\FermaMessage.cs" />
     <Compile Include="TcpServer\TcpServer.cs" />
-    <Compile Include="Telegram\TelegramBot.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
