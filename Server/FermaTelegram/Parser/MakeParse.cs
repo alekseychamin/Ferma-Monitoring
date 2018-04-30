@@ -41,6 +41,7 @@ namespace FermaTelegram
                
         public void ParseZec(string name)
         {
+            double[] curHashrateFerma = new double[3];
             try
             {
                 string URL = "https://api-zcash.flypool.org/miner/:t1awFddn1dam2Vj5h3tz2BXcivN1o5j4irn/currentStats";
@@ -77,20 +78,17 @@ namespace FermaTelegram
                 response = webClient.DownloadString(URL);
                 obj = JsonConvert.DeserializeObject(response);
 
-                double currentHashrate1 = obj.data[0].currentHashrate;
-                double currentHashrate2 = obj.data[1].currentHashrate;
-                double currentHashrate3 = obj.data[2].currentHashrate;
-
-                currentHashrate1 = currentHashrate1 / 1000;
-                currentHashrate2 = currentHashrate2 / 1000;
-                currentHashrate3 = currentHashrate3 / 1000;
+                for (int i = 0; i < obj.Length; i++)
+                {
+                    curHashrateFerma[i] = obj.data[i].currentHashrate / 1000;
+                }                                
 
                 string res =
                              "Текущая скорость  = " + currentHashrate.ToString("0.00") + "kH/s" + "\n" +
                              "Средняя скорость = " + averageHashrate.ToString("0.00") + "kH/s" + "\n" +
-                             "Текущая скорость ferma1 = " + currentHashrate1.ToString("0.00") + "kH/s" + "\n" +
-                             "Текущая скорость ferma2 = " + currentHashrate2.ToString("0.00") + "kH/s" + "\n" +
-                             "Текущая скорость ferma3 = " + currentHashrate3.ToString("0.00") + "kH/s" + "\n" +
+                             "Текущая скорость ferma1 = " + curHashrateFerma[0].ToString("0.00") + "kH/s" + "\n" +
+                             "Текущая скорость ferma2 = " + curHashrateFerma[0].ToString("0.00") + "kH/s" + "\n" +
+                             "Текущая скорость ferma3 = " + curHashrateFerma[0].ToString("0.00") + "kH/s" + "\n" +
                              "Невыплаченный баланс = " + unpaid.ToString("0.000") + "ZEC" + "\n" +
                              "Заработок за день = " + paidUSD.ToString("0.00") + "$" + "/" + paidZEC.ToString("0.00") + "ZEC" + "\n" +
                              "Заработок в месяц = " + usdMounthPaid.ToString("0") + "$" + "/" + coinsMounthPaid.ToString("0.00") + "ZEC" + "\n" +
