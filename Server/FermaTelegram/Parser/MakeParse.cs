@@ -63,7 +63,7 @@ namespace FermaTelegram
                                     "Заработок за день = " + sumPayDay.ToString("0.00") + "$" + "\n" +
                                     "Заработок в месяц = " + sumPayMounth.ToString("0") + "$";
 
-                fermaMessage.Text = message[0] + "\n" + message[1] + "\n" + sumMessage;
+                fermaMessage.Text = message[0] + "\n" + "\n" + message[1] + "\n" + "\n" + sumMessage;
 
             } else
             {
@@ -103,7 +103,7 @@ namespace FermaTelegram
             for (int i = 0; i < obj.data.Count; i++)
             {
                 curHashrateFerma[i] = obj.data[i].currentHashrate / 1000;
-                sHash += "Текущая скорость " + obj.data[i].worker + " " + curHashrateFerma[i].ToString("0.00") + " kH/s" + "\n";
+                sHash += "Текущая скорость " + obj.data[i].worker + " = " + curHashrateFerma[i].ToString("0.00") + " kH/s" + "\n";
             }
 
             response = webClient.DownloadString(statsURL);
@@ -131,9 +131,9 @@ namespace FermaTelegram
                 course = paidUSD / paidCurrency;
             }
 
-            message =
-                             "Текущая скорость  = " + currentHashrate.ToString("0.00") + "kH/s" + "\n" +
-                             "Средняя скорость = " + averageHashrate.ToString("0.00") + "kH/s" + "\n" +
+            message =        nameCurrency + "\n" +
+                             "Текущая скорость  = " + currentHashrate.ToString("0.00") + " kH/s" + "\n" +
+                             "Средняя скорость = " + averageHashrate.ToString("0.00") + " kH/s" + "\n" +
                              sHash +
                              "Заработок за день = " + paidUSD.ToString("0.00") + "$" + "/" + paidCurrency.ToString("0.00") + nameCurrency + "\n" +
                              "Заработок в месяц = " + usdMounthPaid.ToString("0") + "$" + "/" + coinsMounthPaid.ToString("0.00") + nameCurrency + "\n" +
