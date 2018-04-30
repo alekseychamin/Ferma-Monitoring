@@ -145,7 +145,7 @@ namespace FermaTelegram
                 while (i < listMessage.reply.Count)
                 {
                     FermaMessage message = listMessage.reply[i];
-                    string sub = message.Date + message.NameCommand + " " + message.NameFerma;
+                    string sub = message.NameFerma + " " + message.NameCommand;
 
                     if (message.Priority == 3)
                     {

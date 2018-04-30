@@ -36,20 +36,42 @@ namespace FermaTelegram
             double[] payMounth = new double[2];
             string[] message = new string[2];
 
+            FermaMessage fermaMessage = new FermaMessage();
+
             GetStatusCurrency("ZEC", "https://api-zcash.flypool.org/miner/:t1awFddn1dam2Vj5h3tz2BXcivN1o5j4irn", 
                               out payDay[0], out payMounth[0], out message[0]);
 
-            if (message[0] != "")
-            {
-                FermaMessage mes = new FermaMessage();
-                mes.NameCommand = name;
-                mes.NameFerma = "Server";
-                mes.Date = DateTime.Now;
-                mes.Priority = 3;
-                mes.Text = message[0];
+            GetStatusCurrency("ETH", "https://api.ethermine.org/miner/:c0e96814bc0e8916988bab6f558786177fb2a424",
+                              out payDay[1], out payMounth[1], out message[1]);
 
-                listMessage.reply.Add(mes);
+            fermaMessage.NameCommand = name;
+            fermaMessage.NameFerma = "Server";
+            fermaMessage.Date = DateTime.Now;
+            fermaMessage.Priority = 3;
+
+            if ((message[0] != "") || (message[1] != ""))
+            {                                              
+                double sumPayDay = 0;
+                for (int i = 0; i < payDay.Length; i++)
+                    sumPayDay += payDay[i];
+
+                double sumPayMounth = 0;
+                for (int i = 0; i < payMounth.Length; i++)
+                    sumPayMounth += payMounth[i];
+
+                string sumMessage = "Итого: " + "\n" +
+                                    "Заработок за день = " + sumPayDay.ToString("0.00") + "$" + "\n" +
+                                    "Заработок в месяц = " + sumPayMounth.ToString("0") + "$";
+
+                fermaMessage.Text = message[0] + "\n" + message[1] + "\n" + sumMessage;
+
+            } else
+            {
+                fermaMessage.Text = "Нет ферм в работе!";
             }
+
+            listMessage.reply.Add(fermaMessage);
+
         }
 
         public void TaskParseEth(string name)
