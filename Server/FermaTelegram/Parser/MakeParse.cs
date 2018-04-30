@@ -38,7 +38,69 @@ namespace FermaTelegram
         {
             ParseEth(name);
         }
-               
+
+        public void GetStatusCurrency(string nameCurrency, string URL, out double paidUSD, 
+                                      out double usdMounthPaid, out string message)
+        {
+            double[] curHashrateFerma;
+            WebClient webClient = new WebClient();
+
+            paidUSD = 0;
+            usdMounthPaid = 0;
+            message = "";
+            string statsURL = URL + "/currentStats";
+            string workerURL = URL + "/workers";
+            string response;
+
+            response = webClient.DownloadString(workerURL);
+            dynamic obj = JsonConvert.DeserializeObject(response);
+
+            if (obj.data.Count == 0) return;
+
+            curHashrateFerma = new double[obj.data.Count];
+            string sHash = "";
+
+            for (int i = 0; i < obj.data.Count; i++)
+            {
+                curHashrateFerma[i] = obj.data[i].currentHashrate / 1000;
+                sHash += "Текущая скорость " + obj.data[i].worker + " " + curHashrateFerma[i].ToString("0.00") + " kH/s" + "\n";
+            }
+
+            response = webClient.DownloadString(statsURL);
+            obj = JsonConvert.DeserializeObject(response);
+
+            double currentHashrate = obj.data.currentHashrate / 1000;
+            double averageHashrate = obj.data.averageHashrate / 1000;
+
+            double coinsPerMin = obj.data.coinsPerMin;
+            double usdPerMin = obj.data.usdPerMin;
+
+
+
+            paidUSD = usdPerMin * 60 * 24;
+            double paidCurrency = coinsPerMin * 60 * 24;
+
+            usdMounthPaid = paidUSD * 30;
+            double coinsMounthPaid = paidCurrency * 30;
+
+
+            double course = 0;
+            if (paidCurrency != 0)
+            {
+                //Console.WriteLine("PaidUSD =" + paidUSD + " paidZEC = " + paidZEC);
+                course = paidUSD / paidCurrency;
+            }
+
+            message =
+                             "Текущая скорость  = " + currentHashrate.ToString("0.00") + "kH/s" + "\n" +
+                             "Средняя скорость = " + averageHashrate.ToString("0.00") + "kH/s" + "\n" +
+                             sHash +
+                             "Заработок за день = " + paidUSD.ToString("0.00") + "$" + "/" + paidCurrency.ToString("0.00") + nameCurrency + "\n" +
+                             "Заработок в месяц = " + usdMounthPaid.ToString("0") + "$" + "/" + coinsMounthPaid.ToString("0.00") + nameCurrency + "\n" +
+                             "Расчетный курс " + nameCurrency + "/USD = " + course.ToString("0") + "$";
+
+        }
+
         public void ParseZec(string name)
         {
             double[] curHashrateFerma;
@@ -52,8 +114,7 @@ namespace FermaTelegram
                 dynamic obj = JsonConvert.DeserializeObject(response);
 
                 double currentHashrate = obj.data.currentHashrate / 1000;
-                double averageHashrate = obj.data.averageHashrate / 1000;
-                double unpaid = obj.data.unpaid / Math.Pow(10, 8);
+                double averageHashrate = obj.data.averageHashrate / 1000;                
 
                 double coinsPerMin = obj.data.coinsPerMin;
                 double usdPerMin = obj.data.usdPerMin;
@@ -91,8 +152,7 @@ namespace FermaTelegram
                 string res =
                              "Текущая скорость  = " + currentHashrate.ToString("0.00") + "kH/s" + "\n" +
                              "Средняя скорость = " + averageHashrate.ToString("0.00") + "kH/s" + "\n" +
-                             sHash +
-                             "Невыплаченный баланс = " + unpaid.ToString("0.000") + "ZEC" + "\n" +
+                             sHash +                             
                              "Заработок за день = " + paidUSD.ToString("0.00") + "$" + "/" + paidZEC.ToString("0.00") + "ZEC" + "\n" +
                              "Заработок в месяц = " + usdMounthPaid.ToString("0") + "$" + "/" + coinsMounthPaid.ToString("0.00") + "ZEC" + "\n" +
                              "Расчетный курс ZEC/USD = " + course.ToString("0") + "$";
