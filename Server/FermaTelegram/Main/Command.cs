@@ -23,11 +23,11 @@ namespace FermaTelegram
         public abstract void Excecute();
     }
 
-    class CommandStatusZec : Command
+    class CommandStatusCurrency : Command
     {
         private MakeParse makeParser;        
 
-        public CommandStatusZec(string _name, MakeParse makeParser) : base(_name)
+        public CommandStatusCurrency(string _name, MakeParse makeParser) : base(_name)
         {
             name = _name;
             this.makeParser = makeParser;            
@@ -35,7 +35,7 @@ namespace FermaTelegram
 
         public override void Excecute()
         {
-            makeParser.TaskParseZec(name);            
+            makeParser.GetStatusAllCurrency(name);            
         }
 
     }

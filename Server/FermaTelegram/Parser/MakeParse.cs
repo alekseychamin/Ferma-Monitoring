@@ -28,10 +28,28 @@ namespace FermaTelegram
             this.listMessage = listMessage;            
         }
 
-        public void TaskParseZec(string name)
+        public void GetStatusAllCurrency(string name)
         {
             //var task = Task.Run(() => ParseZec(name));            
-            ParseZec(name);
+            //ParseZec(name);
+            double[] payDay = new double[2];
+            double[] payMounth = new double[2];
+            string[] message = new string[2];
+
+            GetStatusCurrency("ZEC", "https://api-zcash.flypool.org/miner/:t1awFddn1dam2Vj5h3tz2BXcivN1o5j4irn", 
+                              out payDay[0], out payMounth[0], out message[0]);
+
+            if (message[0] != "")
+            {
+                FermaMessage mes = new FermaMessage();
+                mes.NameCommand = name;
+                mes.NameFerma = "Server";
+                mes.Date = DateTime.Now;
+                mes.Priority = 3;
+                mes.Text = message[0];
+
+                listMessage.reply.Add(mes);
+            }
         }
 
         public void TaskParseEth(string name)
