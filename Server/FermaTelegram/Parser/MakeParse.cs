@@ -79,19 +79,15 @@ namespace FermaTelegram
                 response = webClient.DownloadString(URL);
                 obj = JsonConvert.DeserializeObject(response);
 
-                curHashrateFerma = new double[obj.Length];
+                curHashrateFerma = new double[obj.data.Count];
                 string sHash = "";
 
-                for (int i = 0; i < obj.Length; i++)
+                for (int i = 0; i < obj.data.Count; i++)
                 {
                     curHashrateFerma[i] = obj.data[i].currentHashrate / 1000;
-                    sHash += "Текущая скорость " + obj.data[i].worker + curHashrateFerma[i].ToString("0.00") + "kH/s" + "\n";
-                }
-
+                    sHash += "Текущая скорость " + obj.data[i].worker + " " + curHashrateFerma[i].ToString("0.00") + " kH/s" + "\n";
+                }                
                 
-
-                
-
                 string res =
                              "Текущая скорость  = " + currentHashrate.ToString("0.00") + "kH/s" + "\n" +
                              "Средняя скорость = " + averageHashrate.ToString("0.00") + "kH/s" + "\n" +
@@ -120,8 +116,7 @@ namespace FermaTelegram
         }
 
         public void ParseEth(string name)
-        {
-            double[] curHashrateFerma = new double[];
+        {            
 
             try
             {
