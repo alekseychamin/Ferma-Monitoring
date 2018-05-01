@@ -38,22 +38,6 @@ namespace FermaTelegram
             makeParser.GetStatusAllCurrency(name);            
         }
 
-    }
-
-    class CommandStatusEth : Command
-    {
-        private MakeParse makeParser;
-
-        public CommandStatusEth(string _name, MakeParse makeParser) : base(_name)
-        {
-            name = _name;
-            this.makeParser = makeParser;
-        }
-
-        public override void Excecute()
-        {
-            makeParser.TaskParseEth(name);
-        }
-
-    }    
+    }   
+        
 }

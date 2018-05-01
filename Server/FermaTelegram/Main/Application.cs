@@ -79,11 +79,7 @@ namespace FermaTelegram
 
             CommandStatusCurrency commandStatusZec = new CommandStatusCurrency("status", makeParse);
             listCommand.Add(commandStatusZec);
-
-            CommandStatusEth commandStatusEth = new CommandStatusEth("statusEth", makeParse);
-            listCommand.Add(commandStatusEth);
-            
-
+                     
             executeCommand = new Task(ExecuteCommand);
             executeCommand.Start();
 
