@@ -102,7 +102,9 @@ namespace FermaTelegram
 
             for (int i = 0; i < obj.data.Count; i++)
             {
-                curHashrateFerma[i] = obj.data[i].currentHashrate / 1000;
+                if (obj.data[i].currentHashrate == null) continue;
+
+                curHashrateFerma[i] = (double)(obj.data[i].currentHashrate) / 1000;
                 sHash += "Текущая скорость " + obj.data[i].worker + " = " + curHashrateFerma[i].ToString("0.00") + " kH/s" + "\n";
             }
 
