@@ -105,6 +105,12 @@ namespace FermaTelegram
             response = webClient.DownloadString(statsURL);
             obj = JsonConvert.DeserializeObject(response);
 
+            if ((obj.data.currentHashrate == null) | (obj.data.averageHashrate == null))
+            {
+                message = "";
+                return;
+            }          
+              
             double currentHashrate = obj.data.currentHashrate / 1000;
             double averageHashrate = obj.data.averageHashrate / 1000;
 
