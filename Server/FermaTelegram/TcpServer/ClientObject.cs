@@ -46,7 +46,7 @@ namespace FermaTelegram
             delayShowMessage = _delay;
 
             this.IPAddr = IPAddr.ToString();
-            this.name = hostInfo.HostName;
+            this.name = hostInfo.HostName.ToString();
 
         }               
                 

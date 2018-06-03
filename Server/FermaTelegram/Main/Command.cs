@@ -28,8 +28,7 @@ namespace FermaTelegram
         private MakeParse makeParser;        
 
         public CommandStatusCurrency(string _name, MakeParse makeParser) : base(_name)
-        {
-            name = _name;
+        {            
             this.makeParser = makeParser;            
         }
 
