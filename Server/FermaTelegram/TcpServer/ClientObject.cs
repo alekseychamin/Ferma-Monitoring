@@ -46,7 +46,7 @@ namespace FermaTelegram
             delayShowMessage = _delay;
 
             this.IPAddr = IPAddr.ToString();
-            this.name = hostInfo.HostName.ToString();
+            //this.name = hostInfo.HostName;
 
         }               
                 
@@ -85,18 +85,23 @@ namespace FermaTelegram
                             //connect = true;
 
                             FermaMessage message = JsonConvert.DeserializeObject<FermaMessage>(json);
-                           
 
-                            if (message.Type != "system")
+                            listMessage.Add(message);
+
+                            if ((this.name == "") && (message.Priority == 2))
                             {
-                                listMessage.Add(message);
-                                
+                                this.name = message.NameFerma;
                             }
-                            else
-                            {
-                                if (message.Text.Contains(connectMessage))
-                                    clientMessage = connectMessage;
-                            }
+
+                            //if (message.Type != "system")
+                            //{
+                                                                
+                            //}
+                            //else
+                            //{
+                            //    if (message.Text.Contains(connectMessage))
+                            //        clientMessage = connectMessage;
+                            //}
 
                         }
                         else
