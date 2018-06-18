@@ -23,7 +23,7 @@ namespace FermaMonitoring
         public float control;
 
         public float hiTemp = 70;
-        public float loTemp = 25;
+        public float loTemp = 35;
         public float loContTemp = 65;
 
         public float hiCont = 95;
