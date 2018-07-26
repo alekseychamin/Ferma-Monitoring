@@ -29,81 +29,53 @@ namespace FermaMonitoring
         public float hiCont = 95;
         public float loCont = 0;
 
-        public Task checkMaxTemp;
-        public Task checkMinTemp;
+        private bool isHighTemp;
+        private bool isLowTemp;
 
-        public Task checkMaxCont;
-        public Task checkMinCont;
+        private bool isHighCont;
+        private bool isLowCont;
 
         public VideoCard()
         {
             listMessage = new List<string>();
 
-            checkMaxTemp = new Task(TaskCheckMaxTemp);
-            checkMinTemp = new Task(TaskCheckMinTemp);
-
-            checkMaxCont = new Task(TaskCheckMaxCont);
-            checkMinCont = new Task(TaskCheckMinCont);            
+            
         }
 
-        private void TaskCheckMaxTemp()
+        public void TaskCheckMaxTemp()
         {
-            while (true)
+            if (temperature >= hiTemp)
             {
-                if (temperature >= hiTemp)
-                {
-                    string message = name + " высокая температура " + "t = " + temperature + " C" + " обороты с = " + control + " %";
-                    listMessage.Add(message);
-                    Thread.Sleep(delayShowMessage);
-                } 
-                else
-                    Thread.Sleep(100);
-            }
+                string message = name + " высокая температура " + "t = " + temperature + " C" + " обороты с = " + control + " %";
+                listMessage.Add(message);                
+            }                        
         }
 
-        private void TaskCheckMinTemp()
+        public void TaskCheckMinTemp()
         {
-            while (true)
+            if (temperature <= loTemp)
             {
-                if (temperature <= loTemp)
-                {
-                    string message = name + " низкая температура " + "t = " + temperature + " C" + " обороты с = " + control + " %";
-                    listMessage.Add(message);
-                    Thread.Sleep(delayShowMessage);
-                }
-                else
-                    Thread.Sleep(100);
-            }
+                string message = name + " низкая температура " + "t = " + temperature + " C" + " обороты с = " + control + " %";
+                listMessage.Add(message);
+            }                        
         }
 
-        private void TaskCheckMaxCont()
+        public void TaskCheckMaxCont()
         {
-            while (true)
+            if ((control >= hiCont) & (temperature >= hiTemp))
             {
-                if ((control >= hiCont) & (temperature >= hiTemp))
-                {
-                    string message = name + " высокие обороты " + "c = " + control + " %" + " температура t = " + temperature + " C";
-                    listMessage.Add(message);
-                    Thread.Sleep(delayShowMessage);
-                }
-                else
-                    Thread.Sleep(100);
-            }
+                string message = name + " высокие обороты " + "c = " + control + " %" + " температура t = " + temperature + " C";
+                listMessage.Add(message);
+            }                                                        
         }
 
-        private void TaskCheckMinCont()
+        public void TaskCheckMinCont()
         {
-            while (true)
+            if ((control <= loCont) & (temperature >= loContTemp))
             {
-                if ((control <= loCont) & (temperature >= loContTemp))
-                {
-                    string message = name + " низкие обороты " + "c = " + control + " %" + " температура t = " + temperature + " C";
-                    listMessage.Add(message);
-                    Thread.Sleep(delayShowMessage);
-                }
-                else
-                    Thread.Sleep(100);
-            }
+                string message = name + " низкие обороты " + "c = " + control + " %" + " температура t = " + temperature + " C";
+                listMessage.Add(message);             
+            }           
         }
 
         public void UpDateSens()

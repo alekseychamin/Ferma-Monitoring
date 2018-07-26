@@ -101,7 +101,7 @@ namespace FermaMonitoring
 
         public override void Excecute()
         {
-            ferma.UpDateGPUInformation();
+            //ferma.UpDateGPUInformation();
             //ferma.DisplayGPUInformation();
             //ferma.tcpClient.SendData(ferma.hw.GetGPUFermaTemp());
             ferma.UpdateProcessMiner();
@@ -129,7 +129,7 @@ namespace FermaMonitoring
 
         public override void Excecute()
         {
-            ferma.UpDateGPUInformation();
+            //ferma.UpDateGPUInformation();
             //ferma.DisplayGPUInformation();
             //ferma.tcpClient.SendData(ferma.hw.GetGPUFermaTemp());
             ferma.UpdateProcessMiner();
@@ -157,7 +157,7 @@ namespace FermaMonitoring
 
         public override void Excecute()
         {
-            ferma.UpDateGPUInformation();
+            //ferma.UpDateGPUInformation();
             //ferma.DisplayGPUInformation();
             //ferma.tcpClient.SendData(ferma.hw.GetGPUFermaTemp());
             ferma.UpdateProcessMiner();

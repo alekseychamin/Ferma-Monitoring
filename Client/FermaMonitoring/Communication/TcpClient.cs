@@ -71,109 +71,64 @@ namespace FermaMonitoring
             catch (Exception ex)
             {
                 Console.WriteLine(DateTime.Now.ToString() + " :" + ferma.name + " Error in Connect SocketTcpClient : " + ex.Message);                
-                isConnect = false;
-                Thread.Sleep(5000);
+                isConnect = false;                
             }
         }
       
         public void ReciveCommand()
-        {
-            while (true)
+        {            
+            if (isConnect)
             {
-                if (isConnect)
+                try
                 {
-                    try
-                    {
-                        byte[] data = new byte[4096]; // буфер для ответа
-                        StringBuilder builder = new StringBuilder();
-                        int bytes = 0; // количество полученных байт
+                    byte[] data = new byte[4096]; // буфер для ответа
+                    StringBuilder builder = new StringBuilder();
+                    int bytes = 0; // количество полученных байт
 
-                        do
-                        {                                                        
+                    do
+                    {                                                        
                             
-                            bytes = socket.Receive(data, data.Length, 0);
-                            builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
-                            Console.WriteLine(DateTime.Now.ToString() + " Ferma.TcpClient.ReciveCommand - try to recive command" + data);                            
+                        bytes = socket.Receive(data, data.Length, 0);
+                        builder.Append(Encoding.Unicode.GetString(data, 0, bytes));
+                        Console.WriteLine(DateTime.Now.ToString() + " Ferma.TcpClient.ReciveCommand - try to recive command" + data);                            
 
-                        } while (socket.Available > 0);
+                    } while (socket.Available > 0);
 
-                        string json = builder.ToString();                        
+                    string json = builder.ToString();                        
 
-                        if (json != "")
-                        {
-
-                            //Console.WriteLine(DateTime.Now.ToString() + " :" + ferma.name + " Ferma.TcpClient.ReciveCommand recived command from server : " + builder.ToString());
-                           
-                            isConnect = true;
-
-                            FermaMessage message = JsonConvert.DeserializeObject<FermaMessage>(json);
-
-                            if (message.Type == "command")
-                                ferma.command = message.Text;                            
-
-                        }
-                        else
-                        {
-                            isConnect = false;
-                        }
-                    }
-                    catch (Exception ex)
+                    if (json != "")
                     {
 
+                        //Console.WriteLine(DateTime.Now.ToString() + " :" + ferma.name + " Ferma.TcpClient.ReciveCommand recived command from server : " + builder.ToString());
+                           
+                        isConnect = true;
+
+                        FermaMessage message = JsonConvert.DeserializeObject<FermaMessage>(json);
+
+                        if (message.Type == "command")
+                            ferma.command = message.Text;                            
+
+                    }
+                    else
+                    {
                         isConnect = false;
-                        Console.WriteLine(DateTime.Now.ToString() + " :" + ferma.name + " Error in ReciveCommand SocketTcpClient : " + ex.Message);
-                        //ferma.listMessage.Add("Сервер был перезапушен!");
-                        
                     }
                 }
-                else
+                catch (Exception ex)
                 {
-                    Connect();
-                }
-                Thread.Sleep(100);
-            }
-        }
 
-
-        private void SendConnect()
-        {
-            FermaMessage message = new FermaMessage();
-
-            message.NameFerma = ferma.name;
-            //message.Date = DateTime.Now;
-            message.Priority = 1;
-            message.Text = "online";
-            message.Type = "system";
-
-            SendData(message);                
+                    isConnect = false;
+                    Console.WriteLine(DateTime.Now.ToString() + " :" + ferma.name + " Error in ReciveCommand SocketTcpClient : " + ex.Message);
+                    //ferma.listMessage.Add("Сервер был перезапушен!");
                         
+                }
+            }
+            else
+            {
+                Connect();
+            }                        
         }
-
-        private void CheckConnect()
-        {
-            //while (true)
-            //{
-            //    //SendData(connectMessage);
-            //    Thread.Sleep(5000);
-
-            //    if (!sendPriorMes)
-            //    {
-            //        Console.WriteLine(DateTime.Now.ToString() + ":" + "serverMessage = " + serverMessage + " : " + "connectMessage =" + connectMessage);
-            //        if (serverMessage == connectMessage)
-            //        {
-            //            isConnect = true;
-
-            //            serverMessage = "";
-            //        }
-            //        else
-            //        {
-            //            isConnect = false;
-            //            serverMessage = "";
-            //        }
-            //    }
-            //}
-        }
-
+               
         public int SendData(FermaMessage message)
         {
             int result = 0;

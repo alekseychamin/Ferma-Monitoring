@@ -75,30 +75,61 @@ namespace FermaMonitoring
             CommandStop comStop = new CommandStop("stop", this);
             listCommand.Add(comStop);
 
-            CommandMiner comZECMiner = new CommandMiner("/ZEC", this, "ZEC");
-            listCommand.Add(comZECMiner);
-
-            CommandMiner comZCLMiner = new CommandMiner("/ZCL", this, "ZCL");
-            listCommand.Add(comZCLMiner);
-
-            CommandMiner comVTCMiner = new CommandMiner("/VTC", this, "VTC");
-            listCommand.Add(comVTCMiner);
-
-            CommandMiner comBTGMiner = new CommandMiner("/BTG", this, "BTG");
-            listCommand.Add(comBTGMiner);
-
-            CommandMiner comMusicMiner = new CommandMiner("/Music", this, "Music");
-            listCommand.Add(comMusicMiner);
-
-            CommandMiner comETHMiner = new CommandMiner("/ETH", this, "ETH");
-            listCommand.Add(comETHMiner);
-
             tcpClient = new TcpClient(this);
 
-            getHardwareInformation = new Task(GetHardwareInformation);
-            executeCommand = new Task(ExecuteCommand);
-            send = new Task(SendMessage);                       
+            //getHardwareInformation = new Task(GetHardwareInformation);
+            //executeCommand = new Task(ExecuteCommand);
+            //send = new Task(SendMessage);       
+                            
                         
+        }
+
+        public void MainCylce()
+        {
+            foreach (var videocard in listVideoCard.ToArray())
+            {
+                videocard.UpDateSens();
+
+                videocard.TaskCheckMaxTemp();
+                videocard.TaskCheckMinTemp();
+                videocard.TaskCheckMaxCont();
+                videocard.TaskCheckMinCont();
+
+                int i = 0;
+                string mesVideoCard = "";
+                while (i < videocard.listMessage.Count)
+                {
+                    string mes = videocard.listMessage[i];
+                    if (mes != "")
+                    {
+                        mesVideoCard = mesVideoCard + mes + "\n";
+                    }
+                    videocard.listMessage.Remove(mes);
+                }
+
+                if (mesVideoCard != "")
+                {
+
+                    FermaMessage message = new FermaMessage();
+                    //message.NameCommand = name;
+                    message.NameFerma = name;
+                    message.Date = DateTime.Now;
+                    message.Priority = 1;
+
+                    message.Text = mesVideoCard;
+
+                    listMessage.Add(message);
+                }
+
+
+            }
+
+            DisplayGPUInformation();
+
+            modbusTCP.SendData();
+
+            ExecuteCommand();
+            SendMessage();
         }
 
         public void ChangeCurMiner()
@@ -393,26 +424,20 @@ namespace FermaMonitoring
                             videocard.senCont = sensor;
                         }
                     }
-                    videocard.UpDateSens();
-
-                    videocard.checkMaxTemp.Start();
-                    videocard.checkMinTemp.Start();
-
-                    videocard.checkMaxCont.Start();
-                    videocard.checkMinCont.Start();
+                    videocard.UpDateSens();                    
                 }
             }
         }    
 
         public void GetHardwareInformation()
         {
-            while (true)
-            {
-                UpDateGPUInformation();
-                modbusTCP.SendData();
-                //DisplayGPUInformation();
-                Thread.Sleep(delayHardwareTime);                
-            }
+            //while (true)
+            //{
+            //    UpDateGPUInformation();
+            //    modbusTCP.SendData();
+            //    //DisplayGPUInformation();
+            //    Thread.Sleep(delayHardwareTime);                
+            //}
         }
 
         public void UpDateGPUInformation()
@@ -533,45 +558,35 @@ namespace FermaMonitoring
         }
 
         public void SendMessage()
-        {
-            while (true)
+        {                                                          
+            if (tcpClient.isConnect)
             {
-                int i = 0;                
-                
-                if (tcpClient.isConnect)
+                try
                 {
-                    try
+                    foreach (FermaMessage message in listMessage.ToArray())
                     {
-                        foreach (FermaMessage message in listMessage.ToArray())
-                        {
                             
-                            //Console.WriteLine(DateTime.Now.ToString() + " отправка сообщении серверу Ferma.SendMessage " + message);                                
-                            if (tcpClient.SendData(message) > 0)
-                                listMessage.Remove(message);                                
+                        //Console.WriteLine(DateTime.Now.ToString() + " отправка сообщении серверу Ferma.SendMessage " + message);                                
+                        if (tcpClient.SendData(message) > 0)
+                            listMessage.Remove(message);                                
                             
-                        }
                     }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(DateTime.Now.ToString() + "error in Ferma.SendMessage count message " + ex.Message);                        
-                    }
-                }                                
-                Thread.Sleep(100);                              
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(DateTime.Now.ToString() + "error in Ferma.SendMessage count message " + ex.Message);                        
+                }
             }
         }
 
         public void ExecuteCommand()
-        {
-            while (true)
+        {            
+            foreach (var command in listCommand)
             {
-                foreach (var command in listCommand)
+                if (command.nameCommand == this.command)
                 {
-                    if (command.nameCommand == this.command)
-                    {
-                        command.Excecute();
-                    }
+                    command.Excecute();
                 }
-                Thread.Sleep(100);
             }
         }
 

@@ -16,14 +16,17 @@ namespace FermaMonitoring
             Ferma ferma = new Ferma(Environment.MachineName, "setting_ferma.xml");
 
             ferma.InitVideoCard();
-            ferma.getHardwareInformation.Start();            
-            ferma.executeCommand.Start();
-            ferma.send.Start();
-            ferma.StartCurrentMiner(firstStart: true);                        
+
+            //ferma.getHardwareInformation.Start();            
+            //ferma.executeCommand.Start();
+            //ferma.send.Start();
+
+            //ferma.StartCurrentMiner(firstStart: true);                        
 
             while (true)
             {
-                Thread.Sleep(100);
+                ferma.MainCylce();
+                Thread.Sleep(15000);
             }            
            
         }       
